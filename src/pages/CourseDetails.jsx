@@ -14,6 +14,7 @@ import {
   PlayCircle,
   ExternalLink,
   Lock,
+  Phone,
 } from "lucide-react";
 
 import {
