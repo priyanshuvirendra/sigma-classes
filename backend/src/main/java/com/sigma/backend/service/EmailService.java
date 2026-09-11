@@ -1,178 +1,134 @@
 package com.sigma.backend.service;
 
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+import tools.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmailService {
 
-    private final JavaMailSender mailSender;
+    @Value("${resend.api-key}")
+    private String resendApiKey;
 
-    public EmailService(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
+    @Value("${email.from:onboarding@resend.dev}")
+    private String emailFrom;
+
+    @Value("${frontend.url}")
+private String frontendUrl;
+
+    private final ObjectMapper objectMapper;
+    private final HttpClient httpClient = HttpClient.newHttpClient();
+
+    public EmailService(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
     }
 
-    public void sendWelcomeEmail(
-            String studentName,
-            String studentEmail
-    ) {
-
+    private void sendEmail(String to, String subject, String html) {
         try {
-
-            MimeMessage message =
-                    mailSender.createMimeMessage();
-
-            MimeMessageHelper helper =
-                    new MimeMessageHelper(
-                            message,
-                            true,
-                            "UTF-8"
-                    );
-
-            helper.setTo(studentEmail);
-
-            helper.setSubject(
-                    "Welcome to Sigma Classes 🎓"
+            Map<String, Object> payload = Map.of(
+                    "from", emailFrom,
+                    "to", List.of(to),
+                    "subject", subject,
+                    "html", html
             );
 
-            helper.setText(
-                    buildWelcomeEmail(studentName),
-                    true
+            String json = objectMapper.writeValueAsString(payload);
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("https://api.resend.com/emails"))
+                    .header("Authorization", "Bearer " + resendApiKey)
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
+
+            HttpResponse<String> response = httpClient.send(
+                    request,
+                    HttpResponse.BodyHandlers.ofString()
             );
 
-            mailSender.send(message);
-
-        } catch (MessagingException e) {
-
+            if (response.statusCode() < 200 || response.statusCode() >= 300) {
+                throw new RuntimeException(
+                        "Resend email failed. HTTP "
+                                + response.statusCode()
+                                + ": "
+                                + response.body()
+                );
+            }
+        } catch (Exception e) {
             throw new RuntimeException(
-                    "Failed to send welcome email",
+                    "Failed to send email through Resend",
                     e
             );
         }
     }
 
+    public void sendWelcomeEmail(String studentName, String studentEmail) {
+        sendEmail(
+                studentEmail,
+                "Welcome to Sigma Classes 🎓",
+               buildWelcomeEmail(
+        studentName,
+        frontendUrl + "/student/login"
+)
+        );
+    }
+
     public void sendVerificationEmail(
-        String studentName,
-        String studentEmail,
-        String verificationToken
-) {
+            String studentName,
+            String studentEmail,
+            String verificationToken
+    ) {
+String verificationUrl =
+        frontendUrl + "/student/verify-email?token="
+                + verificationToken;
 
-    try {
-
-        MimeMessage message =
-                mailSender.createMimeMessage();
-
-        MimeMessageHelper helper =
-                new MimeMessageHelper(
-                        message,
-                        true,
-                        "UTF-8"
-                );
-
-        helper.setTo(studentEmail);
-
-        helper.setSubject(
-                "Verify Your Sigma Classes Email"
-        );
-
-        String verificationUrl =
-                "http://localhost:5173/student/verify-email?token="
-                        + verificationToken;
-
-        helper.setText(
-                buildVerificationEmail(
-                        studentName,
-                        verificationUrl
-                ),
-                true
-        );
-
-        mailSender.send(message);
-
-    } catch (MessagingException e) {
-
-        throw new RuntimeException(
-                "Failed to send verification email",
-                e
+        sendEmail(
+                studentEmail,
+                "Verify Your Sigma Classes Email",
+                buildVerificationEmail(studentName, verificationUrl)
         );
     }
-}
 
-// =====================================================
-// SEND PASSWORD RESET EMAIL
-// =====================================================
+    // =====================================================
+    // SEND PASSWORD RESET EMAIL
+    // =====================================================
 
-public void sendPasswordResetEmail(
-        String studentName,
-        String studentEmail,
-        String resetToken
-) {
+    public void sendPasswordResetEmail(
+            String studentName,
+            String studentEmail,
+            String resetToken
+    ) {
+String resetUrl =
+        frontendUrl + "/student/reset-password?token="
+                + resetToken;
 
-    try {
-
-        MimeMessage message =
-                mailSender.createMimeMessage();
-
-        MimeMessageHelper helper =
-                new MimeMessageHelper(
-                        message,
-                        true,
-                        "UTF-8"
-                );
-
-        helper.setTo(studentEmail);
-
-        helper.setSubject(
-                "Reset Your Sigma Classes Password"
-        );
-
-        String resetUrl =
-                "http://localhost:5173/student/reset-password?token="
-                        + resetToken;
-
-        helper.setText(
-                buildPasswordResetEmail(
-                        studentName,
-                        resetUrl
-                ),
-                true
-        );
-
-        mailSender.send(message);
-
-    } catch (MessagingException e) {
-
-        throw new RuntimeException(
-                "Failed to send password reset email",
-                e
+        sendEmail(
+                studentEmail,
+                "Reset Your Sigma Classes Password",
+                buildPasswordResetEmail(studentName, resetUrl)
         );
     }
-}
 
-public void sendEnrollmentRequestEmail(
-        String studentName,
-        String studentEmail,
-        String courseName,
-        String courseCategory,
-        String courseDuration,
-        String courseMode
-) {
-    try {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper =
-                new MimeMessageHelper(message, true, "UTF-8");
-
-        helper.setTo(studentEmail);
-        helper.setSubject("Enrollment Request Received - Sigma Classes");
-
-        String dashboardUrl =
-                "http://localhost:5173/student/dashboard";
-
-        helper.setText(
+    public void sendEnrollmentRequestEmail(
+            String studentName,
+            String studentEmail,
+            String courseName,
+            String courseCategory,
+            String courseDuration,
+            String courseMode
+    ) {
+String dashboardUrl =
+        frontendUrl + "/student/dashboard";
+        sendEmail(
+                studentEmail,
+                "Enrollment Request Received - Sigma Classes",
                 buildEnrollmentRequestEmail(
                         studentName,
                         courseName,
@@ -180,55 +136,27 @@ public void sendEnrollmentRequestEmail(
                         courseDuration,
                         courseMode,
                         dashboardUrl
-                ),
-                true
-        );
-
-        mailSender.send(message);
-
-    } catch (MessagingException e) {
-        throw new RuntimeException(
-                "Failed to send enrollment request email",
-                e
+                )
         );
     }
-}
 
-// =====================================================
-// SEND ENROLLMENT APPROVED EMAIL
-// =====================================================
+    // =====================================================
+    // SEND ENROLLMENT APPROVED EMAIL
+    // =====================================================
 
-public void sendEnrollmentApprovedEmail(
-        String studentName,
-        String studentEmail,
-        String courseName,
-        String courseCategory,
-        String courseDuration,
-        String courseMode
-) {
-
-    try {
-
-        MimeMessage message =
-                mailSender.createMimeMessage();
-
-        MimeMessageHelper helper =
-                new MimeMessageHelper(
-                        message,
-                        true,
-                        "UTF-8"
-                );
-
-        helper.setTo(studentEmail);
-
-        helper.setSubject(
-                "Enrollment Approved - Sigma Classes"
-        );
-
-        String dashboardUrl =
-                "http://localhost:5173/student/dashboard";
-
-        helper.setText(
+    public void sendEnrollmentApprovedEmail(
+            String studentName,
+            String studentEmail,
+            String courseName,
+            String courseCategory,
+            String courseDuration,
+            String courseMode
+    ) {
+String dashboardUrl =
+        frontendUrl + "/student/dashboard";
+        sendEmail(
+                studentEmail,
+                "Enrollment Approved - Sigma Classes",
                 buildEnrollmentApprovedEmail(
                         studentName,
                         courseName,
@@ -236,20 +164,9 @@ public void sendEnrollmentApprovedEmail(
                         courseDuration,
                         courseMode,
                         dashboardUrl
-                ),
-                true
-        );
-
-        mailSender.send(message);
-
-    } catch (MessagingException e) {
-
-        throw new RuntimeException(
-                "Failed to send enrollment approval email",
-                e
+                )
         );
     }
-}
 
 // =====================================================
 // BUILD ENROLLMENT APPROVED EMAIL
@@ -773,9 +690,10 @@ private String buildVerificationEmail(
             );
 }
 
-    private String buildWelcomeEmail(
-            String studentName
-    ) {
+   private String buildWelcomeEmail(
+        String studentName,
+        String loginUrl
+) {
 
         return """
                 <!DOCTYPE html>
@@ -941,7 +859,7 @@ private String buildVerificationEmail(
                                 margin: 30px 0;
                             ">
 
-                                <a href="http://localhost:5173/student/login"
+                              <a href="${loginUrl}"
                                    style="
                                     display: inline-block;
                                     background: #E31B23;
@@ -996,11 +914,16 @@ private String buildVerificationEmail(
 
                 </body>
                 </html>
-                """.replace(
-                    "${studentName}",
-                    escapeHtml(studentName)
-                );
-    }
+""".replace(
+        "${studentName}",
+        escapeHtml(studentName)
+)
+.replace(
+        "${loginUrl}",
+        loginUrl
+);
+
+}
 // =====================================================
 // BUILD PASSWORD RESET EMAIL
 // =====================================================
