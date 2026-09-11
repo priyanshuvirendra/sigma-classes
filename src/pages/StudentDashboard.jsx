@@ -1486,7 +1486,7 @@ const handleChangePassword = async (event) => {
                         type="button"
                         onClick={() =>
                             navigate(
-                                "/#courses"
+                                "/courses"
                             )
                         }
                     >
