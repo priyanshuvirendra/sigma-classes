@@ -74,7 +74,7 @@ const loadNotifications = async () => {
 
   try {
     const response = await fetch(
-      "http://localhost:8080/api/student/notifications",
+      "https://sigma-classes-backend-ajkh.onrender.com/api/student/notifications",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -134,7 +134,7 @@ const loadNotifications = async () => {
 
                 const profileResponse =
                     await fetch(
-                        "http://localhost:8080/api/student/profile",
+                        "https://sigma-classes-backend-ajkh.onrender.com/api/student/profile",
                         {
                             method: "GET",
                             headers,
@@ -186,7 +186,7 @@ const loadNotifications = async () => {
 
                 const enrollmentResponse =
                     await fetch(
-                        "http://localhost:8080/api/student/enrollments",
+                        "https://sigma-classes-backend-ajkh.onrender.com/api/student/enrollments",
                         {
                             method: "GET",
                             headers,
@@ -212,7 +212,7 @@ const loadNotifications = async () => {
 
                 const resultsResponse =
                     await fetch(
-                        "http://localhost:8080/api/student/results",
+                        "https://sigma-classes-backend-ajkh.onrender.com/api/student/results",
                         {
                             method: "GET",
                             headers,
@@ -266,7 +266,7 @@ const loadNotifications = async () => {
                     setYoutubeLoading(true);
 
                     const youtubeResponse = await fetch(
-                        "http://localhost:8080/api/youtube-content"
+                        "https://sigma-classes-backend-ajkh.onrender.com/api/youtube-content"
                     );
 
                     if (!youtubeResponse.ok) {
@@ -355,7 +355,7 @@ const loadNotifications = async () => {
 
   try {
     const response = await fetch(
-      `http://localhost:8080/api/student/notifications/${id}/read`,
+      `https://sigma-classes-backend-ajkh.onrender.com/api/student/notifications/${id}/read`,
       {
         method: "PUT",
         headers: {
@@ -385,7 +385,7 @@ const markAllNotificationsAsRead = async () => {
 
   try {
     const response = await fetch(
-      "http://localhost:8080/api/student/notifications/read-all",
+      "https://sigma-classes-backend-ajkh.onrender.com/api/student/notifications/read-all",
       {
         method: "PUT",
         headers: {
@@ -484,7 +484,7 @@ const markAllNotificationsAsRead = async () => {
             setProfileUpdateSuccess("");
 
             const response = await fetch(
-                "http://localhost:8080/api/students/profile",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/students/profile",
                 {
                     method: "PUT",
                     headers: {
@@ -619,7 +619,7 @@ const handleChangePassword = async (event) => {
         }
 
         const response = await fetch(
-            "http://localhost:8080/api/students/change-password",
+            "https://sigma-classes-backend-ajkh.onrender.com/api/students/change-password",
             {
                 method: "PUT",
                 headers: {

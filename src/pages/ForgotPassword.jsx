@@ -23,7 +23,7 @@ function ForgotPassword() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/students/forgot-password",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/students/forgot-password",
         {
           method: "POST",
           headers: {

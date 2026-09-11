@@ -32,7 +32,7 @@ function FacultyCourses() {
       const token = getToken();
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/courses",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/courses",
         {
           headers: {
             Authorization: `Bearer ${token}`,

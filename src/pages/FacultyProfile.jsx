@@ -71,7 +71,7 @@ function FacultyProfile() {
 
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/profile",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/profile",
         {
           method: "GET",
 
@@ -208,7 +208,7 @@ function FacultyProfile() {
 
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/profile",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/profile",
         {
           method: "PUT",
 

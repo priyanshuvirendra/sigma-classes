@@ -36,7 +36,7 @@ function EnquiryForm() {
     try {
       // Save enquiry in backend
       const response = await fetch(
-        "http://localhost:8080/api/enquiries",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/enquiries",
         {
           method: "POST",
           headers: {

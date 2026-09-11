@@ -134,7 +134,7 @@ function StudentLogin() {
         try {
 
             const backendResponse = await fetch(
-                "http://localhost:8080/api/students/auth/google",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/students/auth/google",
                 {
                     method: "POST",
 
@@ -252,7 +252,7 @@ function StudentLogin() {
         try {
 
             const response = await fetch(
-                "http://localhost:8080/api/students/auth/login",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/students/auth/login",
                 {
                     method: "POST",
 
@@ -352,7 +352,7 @@ function StudentLogin() {
         try {
 
             const response = await fetch(
-                "http://localhost:8080/api/students/resend-verification",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/students/resend-verification",
                 {
                     method: "POST",
 

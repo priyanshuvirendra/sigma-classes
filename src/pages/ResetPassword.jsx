@@ -50,7 +50,7 @@ function ResetPassword() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/students/reset-password",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/students/reset-password",
         {
           method: "POST",
           headers: {

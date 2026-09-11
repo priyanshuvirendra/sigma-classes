@@ -63,7 +63,7 @@ function StudentRegister() {
 
 
           const googleResponse = await fetch(
-            "http://localhost:8080/api/students/auth/google",
+            "https://sigma-classes-backend-ajkh.onrender.com/api/students/auth/google",
             {
               method: "POST",
 
@@ -215,7 +215,7 @@ function StudentRegister() {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/api/students/register",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/students/register",
         {
           method: "POST",
 

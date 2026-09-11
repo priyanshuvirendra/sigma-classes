@@ -80,7 +80,7 @@ function CourseDetails() {
 
 
         const response = await fetch(
-          `http://localhost:8080/api/courses/${courseId}`
+          `https://sigma-classes-backend-ajkh.onrender.com/api/courses/${courseId}`
         );
 
 
@@ -174,7 +174,7 @@ function CourseDetails() {
 
       try {
         const enrollmentResponse = await fetch(
-          "http://localhost:8080/api/student/enrollments",
+          "https://sigma-classes-backend-ajkh.onrender.com/api/student/enrollments",
           {
             method: "GET",
             headers: {
@@ -207,7 +207,7 @@ function CourseDetails() {
 
         const response =
           await fetch(
-            `http://localhost:8080/api/student/materials/course/${courseId}`,
+            `https://sigma-classes-backend-ajkh.onrender.com/api/student/materials/course/${courseId}`,
             {
               method: "GET",
 
@@ -343,7 +343,7 @@ function CourseDetails() {
       setEnrollmentMessage("");
 
       const response = await fetch(
-        `http://localhost:8080/api/student/enroll/${courseId}`,
+        `https://sigma-classes-backend-ajkh.onrender.com/api/student/enroll/${courseId}`,
         {
           method: "POST",
           headers: {

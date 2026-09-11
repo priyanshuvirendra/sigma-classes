@@ -82,7 +82,7 @@ function FacultyDashboard() {
         // =================================================
 
         const profileResponse = await fetch(
-          "http://localhost:8080/api/faculty/profile",
+          "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/profile",
           {
             method: "GET",
             headers: {
@@ -113,7 +113,7 @@ function FacultyDashboard() {
         // =================================================
 
         const coursesResponse = await fetch(
-          "http://localhost:8080/api/faculty/courses",
+          "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/courses",
           {
             method: "GET",
             headers: {
@@ -141,7 +141,7 @@ function FacultyDashboard() {
         // =================================================
 
         const studentsResponse = await fetch(
-          "http://localhost:8080/api/faculty/students",
+          "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/students",
           {
             method: "GET",
             headers: {
@@ -169,7 +169,7 @@ function FacultyDashboard() {
         // =================================================
 
         const materialsResponse = await fetch(
-          "http://localhost:8080/api/faculty/materials",
+          "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/materials",
           {
             method: "GET",
             headers: {
@@ -197,7 +197,7 @@ function FacultyDashboard() {
         // =================================================
 
         const youtubeResponse = await fetch(
-          "http://localhost:8080/api/faculty/youtube",
+          "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/youtube",
           {
             method: "GET",
             headers: {

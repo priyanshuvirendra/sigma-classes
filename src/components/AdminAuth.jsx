@@ -21,7 +21,7 @@ function AdminAuth({ children }) {
       try {
 
         const response = await fetch(
-          "http://localhost:8080/api/enquiries",
+          "https://sigma-classes-backend-ajkh.onrender.com/api/enquiries",
           {
             method: "GET",
             headers: {

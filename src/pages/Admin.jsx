@@ -217,7 +217,7 @@ function Admin() {
 
 
             const response = await fetch(
-                "http://localhost:8080/api/enquiries",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/enquiries",
                 {
                     method: "GET",
 
@@ -290,7 +290,7 @@ function Admin() {
             setMaterialsError("");
 
             const response = await fetch(
-                "http://localhost:8080/api/admin/materials",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/admin/materials",
                 {
                     method: "GET",
                     headers: {
@@ -356,7 +356,7 @@ function Admin() {
             setYoutubeError("");
 
             const response = await fetch(
-                "http://localhost:8080/api/admin/youtube-content",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/admin/youtube-content",
                 {
                     method: "GET",
                     headers: {
@@ -499,8 +499,8 @@ function Admin() {
         try {
 
             const url = editingYoutubeContent
-                ? `http://localhost:8080/api/admin/youtube-content/${editingYoutubeContent.id}`
-                : "http://localhost:8080/api/admin/youtube-content";
+                ? `https://sigma-classes-backend-ajkh.onrender.com/api/admin/youtube-content/${editingYoutubeContent.id}`
+                : "https://sigma-classes-backend-ajkh.onrender.com/api/admin/youtube-content";
 
             const method =
                 editingYoutubeContent ? "PUT" : "POST";
@@ -635,7 +635,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/youtube-content/${id}`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/youtube-content/${id}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -712,7 +712,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/youtube-content/${content.id}/publish`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/youtube-content/${content.id}/publish`,
                 {
                     method: "PUT",
                     headers: {
@@ -868,8 +868,8 @@ function Admin() {
         try {
 
             const url = editingMaterial
-                ? `http://localhost:8080/api/admin/materials/${editingMaterial.id}`
-                : "http://localhost:8080/api/admin/materials";
+                ? `https://sigma-classes-backend-ajkh.onrender.com/api/admin/materials/${editingMaterial.id}`
+                : "https://sigma-classes-backend-ajkh.onrender.com/api/admin/materials";
 
             const method =
                 editingMaterial ? "PUT" : "POST";
@@ -1013,7 +1013,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/materials/${id}`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/materials/${id}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -1085,7 +1085,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/materials/${material.id}/publish`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/materials/${material.id}/publish`,
                 {
                     method: "PUT",
                     headers: {
@@ -1182,7 +1182,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/enquiries/${id}/status`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/enquiries/${id}/status`,
                 {
                     method: "PUT",
 
@@ -1283,7 +1283,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/enquiries/${id}`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/enquiries/${id}`,
                 {
                     method: "DELETE",
 
@@ -1359,7 +1359,7 @@ function Admin() {
             setEnrollmentsError("");
 
             const response = await fetch(
-                "http://localhost:8080/api/admin/enrollments",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/admin/enrollments",
                 {
                     method: "GET",
                     headers: {
@@ -1427,7 +1427,7 @@ function Admin() {
             setStudentsError("");
 
             const response = await fetch(
-                "http://localhost:8080/api/admin/students",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/admin/students",
                 {
                     method: "GET",
                     headers: {
@@ -1507,7 +1507,7 @@ function Admin() {
             setDeleteStudentError("");
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/students/${student.id}`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/students/${student.id}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -1567,7 +1567,7 @@ function Admin() {
             setStudentUpdateError("");
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/students/${editingStudent.id}`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/students/${editingStudent.id}`,
                 {
                     method: "PUT",
                     headers: {
@@ -1638,7 +1638,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                "http://localhost:8080/api/admin/enrollments",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/admin/enrollments",
                 {
                     method: "POST",
                     headers: {
@@ -1727,7 +1727,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/enrollments/${id}/status`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/enrollments/${id}/status`,
                 {
                     method: "PUT",
                     headers: {
@@ -1809,7 +1809,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/enrollments/${id}`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/enrollments/${id}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -1888,7 +1888,7 @@ const handleEnrollmentFormChange = (event) => {
             setResultsError("");
 
             const response = await fetch(
-                "http://localhost:8080/api/admin/results",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/admin/results",
                 {
                     method: "GET",
                     headers: {
@@ -1952,7 +1952,7 @@ const handleEnrollmentFormChange = (event) => {
         try {
 
             const response = await fetch(
-                "http://localhost:8080/api/admin/results/students",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/admin/results/students",
                 {
                     method: "GET",
                     headers: {
@@ -2004,7 +2004,7 @@ const handleEnrollmentFormChange = (event) => {
         try {
 
             const response = await fetch(
-                "http://localhost:8080/api/courses",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/courses",
                 {
                     method: "GET",
                 }
@@ -2189,8 +2189,8 @@ const handleEnrollmentFormChange = (event) => {
         try {
 
             const url = editingResult
-                ? `http://localhost:8080/api/admin/results/${editingResult.id}`
-                : "http://localhost:8080/api/admin/results";
+                ? `https://sigma-classes-backend-ajkh.onrender.com/api/admin/results/${editingResult.id}`
+                : "https://sigma-classes-backend-ajkh.onrender.com/api/admin/results";
 
             const method =
                 editingResult ? "PUT" : "POST";
@@ -2338,7 +2338,7 @@ const handleEnrollmentFormChange = (event) => {
         try {
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/results/${id}`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/results/${id}`,
                 {
                     method: "DELETE",
                     headers: {

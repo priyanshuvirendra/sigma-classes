@@ -85,7 +85,7 @@ function FacultyStudents() {
 
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/students",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/students",
         {
           headers: {
             Authorization: `Bearer ${token}`,

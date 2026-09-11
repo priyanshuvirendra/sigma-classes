@@ -32,7 +32,7 @@ function Courses({ limit = null, showViewAll = false }) {
         setError("");
 
         const response = await fetch(
-          "http://localhost:8080/api/courses"
+          "https://sigma-classes-backend-ajkh.onrender.com/api/courses"
         );
 
         if (!response.ok) {

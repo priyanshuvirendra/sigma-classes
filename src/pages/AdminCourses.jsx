@@ -57,7 +57,7 @@ function AdminCourses() {
             setError("");
 
             const response = await fetch(
-                "http://localhost:8080/api/admin/courses",
+                "https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses",
                 {
                     method: "GET",
                     headers: {
@@ -360,8 +360,8 @@ curriculum:
             setError("");
 
             const url = editingCourse
-                ? `http://localhost:8080/api/admin/courses/${editingCourse.id}`
-                : "http://localhost:8080/api/admin/courses";
+                ? `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${editingCourse.id}`
+                : "https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses";
 
             const response = await fetch(url, {
                 method: editingCourse
@@ -438,7 +438,7 @@ curriculum:
             setError("");
 
             const response = await fetch(
-                `http://localhost:8080/api/admin/courses/${id}`,
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${id}`,
                 {
                     method: "DELETE",
 

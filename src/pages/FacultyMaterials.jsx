@@ -60,7 +60,7 @@ function FacultyMaterials() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/materials",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/materials",
         {
           headers: {
             Authorization: `Bearer ${getToken()}`,
@@ -102,7 +102,7 @@ function FacultyMaterials() {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/courses",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/courses",
         {
           headers: {
             Authorization: `Bearer ${getToken()}`,
@@ -187,7 +187,7 @@ function FacultyMaterials() {
       setSaving(true);
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/materials",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/materials",
         {
           method: "POST",
 
@@ -278,7 +278,7 @@ function FacultyMaterials() {
       setError("");
 
       const response = await fetch(
-        `http://localhost:8080/api/faculty/materials/${id}`,
+        `https://sigma-classes-backend-ajkh.onrender.com/api/faculty/materials/${id}`,
         {
           method: "DELETE",
 
@@ -337,7 +337,7 @@ function FacultyMaterials() {
       setError("");
 
       const response = await fetch(
-        `http://localhost:8080/api/faculty/materials/${material.id}/publish`,
+        `https://sigma-classes-backend-ajkh.onrender.com/api/faculty/materials/${material.id}/publish`,
         {
           method: "PUT",
 

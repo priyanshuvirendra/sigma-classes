@@ -34,7 +34,7 @@ function VerifyEmail() {
     const verifyEmail = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8080/api/students/verify-email?token=${encodeURIComponent(
+          `https://sigma-classes-backend-ajkh.onrender.com/api/students/verify-email?token=${encodeURIComponent(
             token
           )}`
         );

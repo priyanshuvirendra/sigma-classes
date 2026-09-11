@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 
-const API = "http://localhost:8080/api/admin";
+const API = "https://sigma-classes-backend-ajkh.onrender.com/api/admin";
 
 
 function AdminFaculty() {

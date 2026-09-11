@@ -332,7 +332,7 @@ function FacultyYoutube() {
 
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/youtube",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/youtube",
         {
           method: "GET",
 
@@ -538,7 +538,7 @@ function FacultyYoutube() {
 
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/youtube",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/youtube",
         {
 
           method: "POST",

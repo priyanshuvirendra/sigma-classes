@@ -41,7 +41,7 @@ function FacultyCourseDetails() {
       }
 
       const response = await fetch(
-        "http://localhost:8080/api/faculty/courses",
+        "https://sigma-classes-backend-ajkh.onrender.com/api/faculty/courses",
         {
           method: "GET",
           headers: {
