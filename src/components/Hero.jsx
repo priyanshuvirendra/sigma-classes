@@ -142,7 +142,8 @@ function Hero() {
 
 
               <a
-                href="#enquiry"
+                href="tel:+91 94712 68826" 
+
                 className="sigma-secondary-button"
               >
                 <Phone size={17} />

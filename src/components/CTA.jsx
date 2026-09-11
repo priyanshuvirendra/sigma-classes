@@ -24,7 +24,7 @@ function CTA() {
 
         <div className="cta-buttons">
 
-          <a href="tel:+919999999999" className="btn btn-light">
+          <a href="tel:+91 94712 68826" className="btn btn-light">
             <Phone size={17} />
             Talk to Us
           </a>
