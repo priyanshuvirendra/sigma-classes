@@ -1541,14 +1541,12 @@ function CourseDetails() {
                 )}
               {/* REQUEST A CALL */}
 
-              <Link
-                to="/#enquiry"
-                className="btn btn-light"
-              >
+             
 
-                Request a Call
-
-              </Link>
+                 <a href="tel:+91 94712 68826" className="btn btn-light">
+            <Phone size={17} />
+            Talk to Us
+          </a>
 
 
               {/* WHATSAPP */}

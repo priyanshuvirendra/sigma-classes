@@ -145,7 +145,7 @@ function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href="tel:+919999999999"
+            href="tel:+919471268826"
             className="nav-cta"
           >
             <Phone size={17} />
