@@ -29,7 +29,7 @@ function CTA() {
             Talk to Us
           </a>
 
-          <a href="#courses" className="btn btn-outline-light">
+          <a href="/courses" className="btn btn-outline-light">
             Explore Courses
             <ArrowRight size={17} />
           </a>

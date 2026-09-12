@@ -7,38 +7,30 @@ import {
 
 import facultyDark from "../assets/faculty-dark.png";
 import facultyLight from "../assets/faculty-light.png";
+import faculty1 from "..\assets\Madhu-mam-sigma.png";
+import facultymanish from "..\assets\manish-sir-sigma.png";
 
 function Faculty() {
-  const facultyMembers = [
-    {
-      name: "Faculty Name 1",
-      designation: "Senior Faculty",
-      subject: "Subject Name",
-      experience: "X+ Years",
-      description:
-        "Subject expertise and a short description can be added here.",
-      image: facultyLight,
-    },
-    {
-      name: "Faculty Name 2",
-      designation: "Senior Faculty",
-      subject: "Subject Name",
-      experience: "X+ Years",
-      description:
-        "Subject expertise and a short description can be added here.",
-      image: facultyLight,
-    },
-    {
-      name: "Faculty Name 3",
-      designation: "Faculty",
-      subject: "Subject Name",
-      experience: "X+ Years",
-      description:
-        "Subject expertise and a short description can be added here.",
-      image: facultyLight,
-    },
-  ];
-
+const facultyMembers = [
+  {
+    name: "Manish Mishra",
+    designation: "GS Faculty",
+    subject: "General Studies",
+    experience: "5+ Years",
+    description:
+      "Dedicated General Studies faculty focused on building strong conceptual understanding and helping students prepare effectively for competitive examinations.",
+    image: facultymanish,
+  },
+  {
+    name: "Madhu Mam",
+    designation: "English & Reasoning Faculty",
+    subject: "English & Reasoning",
+    experience: "3+ Years",
+    description:
+      "Experienced faculty for English and Reasoning, helping students strengthen their fundamentals, accuracy and problem-solving approach for competitive examinations.",
+    image: faculty1,
+  },
+];
   return (
     <section className="section faculty-section" id="faculty">
       <div className="container">

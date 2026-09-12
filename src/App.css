@@ -23286,11 +23286,11 @@ body.light-mode .sigma-proof-metric + .sigma-proof-metric,
 /* =========================================================
    FACULTY GRID
    ========================================================= */
-
 .faculty-team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 360px));
+  justify-content: center;
+  gap: 22px;
 }
 
 

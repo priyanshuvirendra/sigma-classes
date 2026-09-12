@@ -153,7 +153,7 @@ function Footer() {
               </h3>
 
               <p>
-                Sasaram, Bihar
+                2nd Floor, Above Just Study Library, Behind P-Mart, Near Overbridge, Gaurakshini, Sasaram, Bihar
               </p>
 
             </div>
@@ -224,7 +224,14 @@ function Footer() {
               >
                 Facebook
               </a>
-
+ <a
+                href="https://www.google.com/maps/place//@24.9588286,84.0151549,17z/data=!3m1!4b1!4m3!3m2!1s0x398db7e084da4bdb:0x24ed74ce9c11728b!12e1?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Google"   
+              >
+                Review Us on Google
+              </a>
             </div>
 
           </div>
