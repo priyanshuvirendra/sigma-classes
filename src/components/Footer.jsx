@@ -2,6 +2,9 @@ function Footer() {
 
   const currentYear = new Date().getFullYear();
 
+  const googleMapsUrl =
+    "https://maps.app.goo.gl/SN9eicfNBMT28Eot7";
+
   return (
     <footer className="footer">
 
@@ -28,16 +31,18 @@ function Footer() {
             </a>
 
             <p className="footer-description">
-           BPSC • SSC • BANK • Competitive Exams
-Focused preparation with experienced faculty and structured guidance.
+              Focused preparation for competitive exams with
+              experienced faculty and structured guidance.
             </p>
 
-            <div className="footer-location">
-              <span>📍</span>
-              <span>
-               Sasaram, Bihar
-              </span>
-            </div>
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="footer-location-link"
+            >
+              📍 Sasaram, Bihar
+            </a>
 
           </div>
 
@@ -48,9 +53,7 @@ Focused preparation with experienced faculty and structured guidance.
 
           <div className="footer-column">
 
-            <h4>
-              Quick Links
-            </h4>
+            <h4>Quick Links</h4>
 
             <a href="#home">
               Home
@@ -68,10 +71,6 @@ Focused preparation with experienced faculty and structured guidance.
               Results
             </a>
 
-     <a href="/admin">
-  Staff Login
-</a>
-
             <a href="#contact">
               Contact
             </a>
@@ -80,70 +79,27 @@ Focused preparation with experienced faculty and structured guidance.
 
 
           {/* =====================================================
-              COURSES
+              STUDENT
           ===================================================== */}
 
           <div className="footer-column">
 
-            <h4>
-              Popular Courses
-            </h4>
-
-            <a href="#courses">
-              SSC CGL
-            </a>
-
-            <a href="#courses">
-              SSC CHSL
-            </a>
-
-            <a href="#courses">
-              Banking Exams
-            </a>
-
-            <a href="#courses">
-              Quantitative Aptitude
-            </a>
-
-            <a href="#courses">
-              Reasoning
-            </a>
-
-            <a href="#courses">
-              English
-            </a>
-
-          </div>
-
-
-          {/* =====================================================
-              STUDENT PORTAL
-          ===================================================== */}
-
-          <div className="footer-column">
-
-            <h4>
-              Student Portal
-            </h4>
+            <h4>Student</h4>
 
             <a href="/student/login">
               Student Login
             </a>
 
-            <a href="/student/dashboard">
-              My Courses
-            </a>
-
-            <a href="/student/dashboard">
-              Study Materials
-            </a>
-
-            <a href="/student/dashboard">
-              YouTube Content
+            <a href="/student/register">
+              Create Account
             </a>
 
             <a href="/student/forgot-password">
               Forgot Password
+            </a>
+
+            <a href="/admin">
+              Staff Login
             </a>
 
           </div>
@@ -153,25 +109,21 @@ Focused preparation with experienced faculty and structured guidance.
               CONTACT
           ===================================================== */}
 
-          <div className="footer-column">
+          <div className="footer-column footer-contact">
 
-            <h4>
-              Contact Us
-            </h4>
+            <h4>Contact Us</h4>
 
-           <a href="tel:+919471268826">
+            <a href="tel:+919471268826">
               +91 94712 68826
             </a>
 
-            <a href="tel:+919198940104">  +91 91989 40104 </a>
+            <a href="tel:+919198940104">
+              +91 91989 40104
+            </a>
 
             <a href="mailto:info@sigmaclasses.com">
               info@sigmaclasses.com
             </a>
-
-            <span>
-              Sasaram, Bhar
-            </span>
 
             <span>
               Mon – Sat: 9:00 AM – 7:00 PM
@@ -183,7 +135,66 @@ Focused preparation with experienced faculty and structured guidance.
 
 
         {/* =====================================================
-            SOCIAL + LEGAL
+            LOCATION
+        ===================================================== */}
+
+        <div className="footer-location-section">
+
+          <div className="footer-location-content">
+
+            <div>
+
+              <span className="footer-location-label">
+                FIND US
+              </span>
+
+              <h3>
+                Visit Sigma Classes
+              </h3>
+
+              <p>
+                Sasaram, Bihar
+              </p>
+
+            </div>
+
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="footer-map-card"
+              aria-label="Open Sigma Classes location in Google Maps"
+            >
+
+              <div className="footer-map-placeholder">
+
+                <span className="footer-map-pin">
+                  📍
+                </span>
+
+                <span>
+                  Sigma Classes
+                </span>
+
+                <small>
+                  Sasaram, Bihar
+                </small>
+
+              </div>
+
+              <div className="footer-map-action">
+                View on Google Maps →
+              </div>
+
+            </a>
+
+          </div>
+
+        </div>
+
+
+        {/* =====================================================
+            SOCIAL
         ===================================================== */}
 
         <div className="footer-middle">
@@ -206,30 +217,12 @@ Focused preparation with experienced faculty and structured guidance.
               </a>
 
               <a
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-              >
-                Instagram
-              </a>
-
-              <a
                 href="https://www.facebook.com/p/SIGMA-Classes-61558091289264/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
               >
                 Facebook
-              </a>
-
-              <a
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Telegram"
-              >
-                Telegram
               </a>
 
             </div>
