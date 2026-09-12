@@ -76,7 +76,7 @@ function Navbar() {
             Home
           </a>
 
-          <a href="/courses" onlick={closeMenu}>
+          <a href="/courses"onClick={closeMenu}>
             Courses
           </a>
 

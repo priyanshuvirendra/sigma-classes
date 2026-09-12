@@ -68,9 +68,9 @@ Focused preparation with experienced faculty and structured guidance.
               Results
             </a>
 
-            <a href="#about">
-              About Us
-            </a>
+     <a href="/admin">
+  Staff Login
+</a>
 
             <a href="#contact">
               Contact
@@ -159,8 +159,8 @@ Focused preparation with experienced faculty and structured guidance.
               Contact Us
             </h4>
 
-            <a href="tel:+919471688266">
-              +91 94716 88266
+           <a href="tel:+919471268826">
+              +91 94712 68826
             </a>
 
             <a href="tel:+919198940104">  +91 91989 40104 </a>

@@ -176,24 +176,6 @@ button {
    NAVBAR
 ========================================================= */
 
-.navbar {
-  position: sticky;
-
-  top: 0;
-
-  z-index: 100;
-
-  background: var(--nav-bg);
-
-  border-bottom: 1px solid var(--border);
-
-  backdrop-filter: blur(12px);
-
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease;
-}
-
 .nav-container {
   min-height: 70px;
 
@@ -38242,5 +38224,77 @@ html[data-theme="light"] .faculty-danger-btn:hover {
 
     display: none !important;
   }
+
+}
+
+@media (max-width: 768px) {
+    .youtube-section {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .youtube-section .youtube-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .youtube-section .youtube-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .youtube-section .youtube-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+}
+
+
+
+body {
+  padding-top: 70px;
+}
+.navbar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  z-index: 1000;
+
+  background: var(--nav-bg);
+
+  border-bottom: 1px solid var(--border);
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+/* =====================================================
+   YOUTUBE HOME SECTION — MOBILE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .public-youtube-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .public-youtube-card {
+        width: 100%;
+        max-width: 100%;
+    }
 
 }
