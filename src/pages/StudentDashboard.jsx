@@ -1519,7 +1519,7 @@ const handleChangePassword = async (event) => {
                         <button
                             type="button"
                             className="student-course-btn"
-                            onClick={() => navigate("/#courses")}
+                            onClick={() => navigate("/courses")}
                         >
                             Explore Courses
                         </button>

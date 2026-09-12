@@ -38236,8 +38236,11 @@ html[data-theme="light"] .faculty-danger-btn:hover {
 }
 
 
-@media (max-width: 610px) {
+@media (max-width: 768px){
   .sigma-trust-point{
     font-size: 12px; 
+
+    display: none !important;
   }
+
 }
