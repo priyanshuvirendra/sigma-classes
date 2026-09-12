@@ -7,8 +7,9 @@ import {
 
 import facultyDark from "../assets/faculty-dark.png";
 import facultyLight from "../assets/faculty-light.png";
-import faculty1 from "..\assets\Madhu-mam-sigma.png";
-import facultymanish from "..\assets\manish-sir-sigma.png";
+import faculty1 from "..\assets\madhu.png";
+
+import facultymanish from "..\assets\manish.png";
 
 function Faculty() {
 const facultyMembers = [
