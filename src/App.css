@@ -23327,15 +23327,12 @@ body.light-mode .sigma-proof-metric + .sigma-proof-metric,
    ========================================================= */
 
 .faculty-card-image {
-  position: relative;
-
   width: 100%;
-  height: 280px;
-
+  height: 330px;
   overflow: hidden;
-
-  background: #202023;
+  background: #eeeeee;
 }
+
 .faculty-card-image img {
   width: 100%;
   height: 100%;
@@ -23343,7 +23340,6 @@ body.light-mode .sigma-proof-metric + .sigma-proof-metric,
   object-fit: contain;
   object-position: center;
 }
-
 
 /* =========================================================
    CARD CONTENT
@@ -38657,4 +38653,10 @@ body {
     font-size: 10px;
   }
 
+}
+
+@media (max-width: 768px) {
+  .faculty-card-image {
+    height: 360px;
+  }
 }
