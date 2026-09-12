@@ -4,12 +4,10 @@ import {
   Target,
   Clock3,
 } from "lucide-react";
-
 import facultyDark from "../assets/faculty-dark.png";
 import facultyLight from "../assets/faculty-light.png";
-import faculty1 from "..\assets\madhu.png";
-
-import facultymanish from "..\assets\manish.png";
+import faculty1 from "../assets/madhu.png";
+import facultyManish from "../assets/manish.png";
 
 function Faculty() {
 const facultyMembers = [
@@ -20,7 +18,7 @@ const facultyMembers = [
     experience: "5+ Years",
     description:
       "Dedicated General Studies faculty focused on building strong conceptual understanding and helping students prepare effectively for competitive examinations.",
-    image: facultymanish,
+    image: facultyManish,
   },
   {
     name: "Madhu Mam",
