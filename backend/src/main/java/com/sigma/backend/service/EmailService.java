@@ -53,14 +53,19 @@ private String frontendUrl;
                     HttpResponse.BodyHandlers.ofString()
             );
 
-            if (response.statusCode() < 200 || response.statusCode() >= 300) {
-                throw new RuntimeException(
-                        "Resend email failed. HTTP "
-                                + response.statusCode()
-                                + ": "
-                                + response.body()
-                );
-            }
+          if (response.statusCode() < 200 || response.statusCode() >= 300) {
+    System.err.println("===== RESEND EMAIL ERROR =====");
+    System.err.println("HTTP STATUS: " + response.statusCode());
+    System.err.println("RESPONSE BODY: " + response.body());
+    System.err.println("==============================");
+
+    throw new RuntimeException(
+        "Resend email failed. HTTP " +
+        response.statusCode() +
+        ": " +
+        response.body()
+    );
+}
         } catch (Exception e) {
             throw new RuntimeException(
                     "Failed to send email through Resend",
