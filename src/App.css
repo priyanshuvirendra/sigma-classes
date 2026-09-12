@@ -23461,67 +23461,58 @@ body.light-mode .sigma-proof-metric + .sigma-proof-metric,
   opacity: 0.8;
 }
 
-
 /* =========================================================
-   DARK THEME
+   FACULTY CARDS — THEME COMPATIBLE
    ========================================================= */
 
-.dark-theme .faculty-card {
-  background: #171719;
-  border-color: #2b2b2f;
+.faculty-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    box-shadow: var(--shadow);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.dark-theme .faculty-card-image {
-  background: #202023;
+.faculty-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(227, 27, 35, 0.35);
 }
 
-.dark-theme .faculty-card-content h4 {
-  color: #ffffff;
+.faculty-card-image {
+    background: var(--surface-soft);
 }
 
-.dark-theme .faculty-card-divider {
-  background: #2b2b2f;
+.faculty-card-content h4 {
+    color: var(--text);
 }
 
-
-/* =========================================================
-   LIGHT THEME
-   ========================================================= */
-
-.light-theme .faculty-card {
-  background: #ffffff;
-  border-color: #e4e4e7;
-
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+.faculty-card-designation {
+    color: var(--primary);
 }
 
-.light-theme .faculty-card:hover {
-  border-color: #d4d4d8;
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.08);
+.faculty-card-description {
+    color: var(--text-secondary);
 }
 
-.light-theme .faculty-card-image {
-  background: #f4f4f5;
+.faculty-card-divider {
+    background: var(--border);
 }
 
-.light-theme .faculty-card-content h4 {
-  color: #18181b;
+.faculty-card-meta-item strong {
+    color: var(--text);
 }
 
-.light-theme .faculty-card-description {
-  color: #52525b;
+.faculty-card-meta-item span {
+    color: var(--text-secondary);
 }
 
-.light-theme .faculty-card-divider {
-  background: #e4e4e7;
+.faculty-card-meta-icon {
+    background: rgba(227, 27, 35, 0.08);
+    color: var(--primary);
 }
-
-.light-theme .faculty-card-meta-item span {
-  color: #3f3f46;
-}
-
 
 /* =========================================================
    TABLET
@@ -38363,17 +38354,16 @@ body {
 /* =========================
    MAP CARD
 ========================= */
-
 .footer-map-card {
-  display: block;
-  overflow: hidden;
-  border: 1px solid #29292d;
-  border-radius: 14px;
-  background: #18181b;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface-soft);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .footer-map-card:hover {
