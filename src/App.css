@@ -24145,60 +24145,6 @@ body.light-mode .sigma-proof-metric + .sigma-proof-metric,
     margin-top: auto;
 }
 
-/* =====================================================
-   YOUTUBE HOME SECTION — CARD WIDTH & SPACING
-   ===================================================== */
-
-.public-youtube-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-    width: 100%;
-}
-
-.public-youtube-card {
-    width: 100%;
-}
-
-/* =====================================================
-   YOUTUBE HOME SECTION — FINAL CARD LAYOUT
-   ===================================================== */
-
-.public-youtube-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    width: 100%;
-}
-
-.public-youtube-card {
-    width: 100%;
-    max-width: none;
-    
-}
-
-/* =====================================================
-   CENTER YOUTUBE CARDS
-   ===================================================== */
-
-.public-youtube-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
-
-    width: 100%;
-    max-width: 1050px;
-
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.public-youtube-card {
-    width: 100%;
-    max-width: none;
-}
-
-
 
 
 /* =====================================================
@@ -38660,97 +38606,102 @@ body {
     height: 360px;
   }
 }
-
-/* =====================================================
-   RESULTS SECTION
-===================================================== */
+/* =========================================================
+   RESULTS
+========================================================= */
 
 .results-section {
-  padding: 90px 0;
   background:
     radial-gradient(
       circle at 85% 20%,
-      rgba(227, 27, 35, 0.08),
-      transparent 35%
+      rgba(237, 27, 47, 0.08),
+      transparent 32%
     ),
     var(--background);
 }
 
+.results-section .section-label {
+  color: var(--accent);
+}
 
-/* =====================================================
-   HEADER
-===================================================== */
+.results-section h2 {
+  color: var(--text);
+}
+
+.results-section h2 span {
+  color: var(--accent);
+}
 
 .results-header {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
+  align-items: flex-end;
   gap: 40px;
-  margin-bottom: 42px;
+  margin-bottom: 45px;
 }
 
 .results-header .section-heading {
-  max-width: 650px;
-}
-
-.results-header .section-heading h2 {
-  margin-bottom: 16px;
+  max-width: 680px;
 }
 
 .results-header .section-heading p {
   max-width: 650px;
-  margin: 0;
+  margin-top: 15px;
   color: var(--text-secondary);
   font-size: 13px;
   line-height: 1.8;
 }
 
 
-/* =====================================================
-   HIGHLIGHT
-===================================================== */
+/* =========================================================
+   RESULT HIGHLIGHT
+========================================================= */
 
 .result-highlight {
-  min-width: 230px;
-
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 13px;
 
-  padding: 18px 20px;
+  min-width: 210px;
 
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  padding: 16px 20px;
 
   background: var(--surface);
-
-  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 12px;
 
   box-shadow: var(--shadow-sm);
 }
 
-.result-highlight > div {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+.result-highlight svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.result-highlight strong,
+.result-highlight span {
+  display: block;
 }
 
 .result-highlight strong {
   color: var(--text);
+
+  font-family: "Manrope", sans-serif;
   font-size: 21px;
   line-height: 1;
 }
 
 .result-highlight span {
+  margin-top: 4px;
   color: var(--text-secondary);
   font-size: 10px;
   line-height: 1.4;
 }
 
 
-/* =====================================================
+/* =========================================================
    RESULTS GRID
-===================================================== */
+========================================================= */
 
 .results-grid {
   display: grid;
@@ -38759,28 +38710,27 @@ body {
 }
 
 
-/* =====================================================
+/* =========================================================
    RESULT CARD
-===================================================== */
+========================================================= */
 
 .result-card {
   min-width: 0;
 
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 13px;
 
   padding: 15px;
 
-  border: 1px solid var(--border);
-  border-radius: 12px;
-
   background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
 
   transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .result-card:hover {
@@ -38790,22 +38740,21 @@ body {
 }
 
 
-/* =====================================================
+/* =========================================================
    RESULT ICON
-===================================================== */
+========================================================= */
 
 .result-photo {
-  flex: 0 0 62px;
   width: 62px;
   height: 62px;
+  flex-shrink: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 
   border-radius: 10px;
 
-  background: var(--accent);
+  background: var(--primary);
   color: #ffffff;
 }
 
@@ -38814,23 +38763,30 @@ body {
 }
 
 
-/* =====================================================
+/* =========================================================
    RESULT INFORMATION
-===================================================== */
+========================================================= */
 
 .result-info {
   min-width: 0;
 }
 
-.result-info > span {
+.result-info span,
+.result-info h3,
+.result-info strong {
   display: block;
-  margin-bottom: 7px;
+}
+
+.result-info span {
+  margin-bottom: 5px;
 
   color: var(--text-secondary);
 
   font-size: 8px;
   font-weight: 700;
-  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+
   line-height: 1.3;
 }
 
@@ -38845,8 +38801,6 @@ body {
 }
 
 .result-info strong {
-  display: block;
-
   color: var(--accent);
 
   font-size: 10px;
@@ -38855,14 +38809,14 @@ body {
 }
 
 
-/* =====================================================
+/* =========================================================
    CTA
-===================================================== */
+========================================================= */
 
 .results-section .text-link {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 
   margin-top: 28px;
 
@@ -38882,9 +38836,9 @@ body {
 }
 
 
-/* =====================================================
+/* =========================================================
    TABLET
-===================================================== */
+========================================================= */
 
 @media (max-width: 1100px) {
 
@@ -38895,9 +38849,9 @@ body {
 }
 
 
-/* =====================================================
-   SMALLER DESKTOP / TABLET
-===================================================== */
+/* =========================================================
+   SMALL TABLET
+========================================================= */
 
 @media (max-width: 850px) {
 
@@ -38914,10 +38868,10 @@ body {
 }
 
 
-/* =====================================================
+/* =========================================================
    MOBILE
-   Results section intentionally hidden
-===================================================== */
+   RESULTS HIDDEN
+========================================================= */
 
 @media (max-width: 768px) {
 
