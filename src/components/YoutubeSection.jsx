@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, ListVideo, Play } from "lucide-react";
-
+import { ArrowUpRight } from "lucide-react";
 const API_BASE_URL = "https://sigma-classes-backend-ajkh.onrender.com";
 
 function YoutubeSection({ limit = null, showViewAll = false }) {
@@ -154,58 +153,27 @@ function YoutubeSection({ limit = null, showViewAll = false }) {
                                         {/* =================================================
                                             THUMBNAIL
                                         ================================================= */}
+<div className="public-youtube-thumbnail">
 
-                                        <a
-                                            href={getWatchUrl(content)}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="public-youtube-thumbnail"
-                                        >
+    {isPlaylist ? (
+        <iframe
+            src={`https://www.youtube-nocookie.com/embed?listType=playlist&list=${content.youtubeId}`}
+            title={content.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+        />
+    ) : (
+        <iframe
+            src={`https://www.youtube-nocookie.com/embed/${content.youtubeId}`}
+            title={content.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+        />
+    )}
 
-                                            {content.thumbnailUrl ? (
-
-                                                <img
-                                                    src={
-                                                        content.thumbnailUrl
-                                                    }
-                                                    alt={
-                                                        content.title
-                                                    }
-                                                />
-
-                                            ) : (
-
-                                                <div className="public-youtube-placeholder">
-
-                                                    {isPlaylist
-                                                        ? "PLAYLIST"
-                                                        : isShort
-                                                            ? "SHORTS"
-                                                            : "VIDEO"}
-
-                                                </div>
-
-                                            )}
-
-
-                                            <span className="public-youtube-play">
-
-                                                {isPlaylist ? (
-
-                                                    <ListVideo size={21} />
-
-                                                ) : (
-
-                                                    <Play
-                                                        size={21}
-                                                        fill="currentColor"
-                                                    />
-
-                                                )}
-
-                                            </span>
-
-                                        </a>
+</div>
 
 
                                         {/* =================================================

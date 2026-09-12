@@ -9132,6 +9132,14 @@ body.dark .youtube-action-delete {
     display: block;
 }
 
+
+.public-youtube-thumbnail iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
 .public-youtube-placeholder {
     display: flex;
     align-items: center;
