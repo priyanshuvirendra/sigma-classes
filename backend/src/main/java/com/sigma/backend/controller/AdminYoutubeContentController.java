@@ -3,6 +3,7 @@ package com.sigma.backend.controller;
 import com.sigma.backend.entity.YoutubeContent;
 import com.sigma.backend.repository.YoutubeContentRepository;
 import com.sigma.backend.util.YoutubeUrlUtils;
+import org.springframework.security.core.Authentication;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,10 +53,10 @@ public class AdminYoutubeContentController {
     /* =====================================================
        CREATE CONTENT
     ===================================================== */
-
-    @PostMapping
+@PostMapping
 public ResponseEntity<?> createContent(
-        @RequestBody YoutubeContent content) {
+        @RequestBody YoutubeContent content,
+        Authentication authentication) {
 
     if (content.getType() == null ||
         (!content.getType().equalsIgnoreCase("VIDEO")
@@ -128,13 +129,17 @@ public ResponseEntity<?> createContent(
                 )
         );
     }
+if (content.getDisplayOrder() == null) {
+    content.setDisplayOrder(0);
+}
 
-    if (content.getDisplayOrder() == null) {
-        content.setDisplayOrder(0);
-    }
+// Set the authenticated user's username
+content.setFacultyUsername(authentication.getName());
 
-    YoutubeContent saved =
-            youtubeContentRepository.save(content);
+
+
+YoutubeContent saved =
+        youtubeContentRepository.save(content);
 
     return ResponseEntity.ok(saved);
 }
