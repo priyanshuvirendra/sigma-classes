@@ -1563,6 +1563,80 @@ button {
 
 
 /* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  padding: 65px 0 25px;
+
+  background: #111111;
+
+  color: #ffffff;
+}
+
+.footer-grid {
+  display: grid;
+
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+
+  gap: 50px;
+}
+
+.footer-logo {
+  margin-bottom: 15px;
+}
+
+.footer p {
+  max-width: 280px;
+
+  color: #a1a1aa;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+.footer h4 {
+  margin: 0 0 17px;
+
+  font-size: 13px;
+}
+
+.footer a,
+.footer span {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #a1a1aa;
+
+  font-size: 12px;
+}
+
+.footer a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 25px;
+
+  margin-top: 50px;
+
+  border-top: 1px solid #29292d;
+}
+
+.footer-bottom span {
+  margin: 0;
+}
+
+
+/* =========================================================
    MOBILE MENU
 ========================================================= */
 
@@ -1841,6 +1915,23 @@ button {
     width: 100%;
   }
 
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+}
 
 
 /* =========================================================
@@ -38188,25 +38279,8 @@ body {
     background 0.25s ease,
     border-color 0.25s ease;
 }
-/* =====================================================
-   YOUTUBE HOME SECTION — MOBILE
-   ===================================================== */
 
-@media (max-width: 768px) {
 
-    .public-youtube-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .public-youtube-card {
-        width: 100%;
-        max-width: 100%;
-    }
-
-}
 
 /* =========================================================
    FOOTER
