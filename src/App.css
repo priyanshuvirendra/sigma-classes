@@ -14741,7 +14741,7 @@ body.dark .youtube-action-delete {
 
   color: #c7c7ce;
 
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -38217,5 +38217,27 @@ html[data-theme="light"] .faculty-danger-btn:hover {
 @media (min-width: 901px) {
   .faculty-sidebar-close {
     display: none !important;
+  }
+}
+
+
+
+
+.sigma-trust-point {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #c7c7ce;
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+@media (max-width: 610px) {
+  .sigma-trust-point{
+    font-size: 12px; 
   }
 }
