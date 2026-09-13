@@ -29,6 +29,8 @@ function CourseDetails() {
   const navigate = useNavigate();
 
 
+
+
   // =====================================================
   // COURSE STATE
   // =====================================================
@@ -66,6 +68,50 @@ function CourseDetails() {
   const [enrollmentMessage, setEnrollmentMessage] = useState("");
 
 
+
+  
+
+
+  useEffect(() => {
+  if (!course) return;
+
+  const courseName = course.name || "Competitive Exam Course";
+  const category = course.category || "Competitive Exams";
+
+  document.title =
+    `${courseName} | Sigma Classes Sasaram | ${category} Coaching`;
+
+  const description =
+    course.description ||
+    `Prepare for ${category} with Sigma Classes, Sasaram. Get expert faculty, focused preparation, regular tests and personal guidance.`;
+
+  let metaDescription = document.querySelector(
+    'meta[name="description"]'
+  );
+
+  if (!metaDescription) {
+    metaDescription = document.createElement("meta");
+    metaDescription.setAttribute("name", "description");
+    document.head.appendChild(metaDescription);
+  }
+
+  metaDescription.setAttribute("content", description);
+
+  let canonical = document.querySelector(
+    'link[rel="canonical"]'
+  );
+
+  if (!canonical) {
+    canonical = document.createElement("link");
+    canonical.setAttribute("rel", "canonical");
+    document.head.appendChild(canonical);
+  }
+
+  canonical.setAttribute(
+    "href",
+    `https://sigmaclassesssm.in/courses/${courseId}`
+  );
+}, [course, courseId]);
   // =====================================================
   // FETCH COURSE
   // =====================================================

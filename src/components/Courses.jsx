@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import {
   ArrowUpRight,
@@ -17,11 +18,13 @@ function Courses({ limit = null, showViewAll = false }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-
+const location = useLocation();
   // =====================================================
   // FETCH COURSES FROM BACKEND
   // =====================================================
 useEffect(() => {
+
+   if (location.pathname !== "/courses") return;
   document.title =
     "Courses | Sigma Classes Sasaram | SSC, BPSC, Banking & Competitive Exams";
 
