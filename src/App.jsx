@@ -77,8 +77,6 @@ function Home() {
         {/* HERO */}
         <Hero />
 
-        {/* STATS */}
-        <Stats />
 
         {/* WHY CHOOSE US */}
         <WhyChooseUs />

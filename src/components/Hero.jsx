@@ -1,6 +1,3 @@
-
-import { useEffect, useState } from "react";
-
 import {
   ArrowRight,
   Phone,
@@ -11,7 +8,6 @@ import {
   CalendarDays,
 } from "lucide-react";
 
-import sigmaLogo from "../assets/sigma-logo.png";
 import founderImage from "../assets/founder.png";
 
 function Hero() {
@@ -31,23 +27,18 @@ function Hero() {
       ===================================================== */}
 
       <div className="sigma-hero-background">
-
         <div className="sigma-bg-red-glow"></div>
-
         <div className="sigma-bg-gold-glow"></div>
-
         <div className="sigma-bg-diagonal"></div>
 
         <div className="sigma-bg-books">
           <div className="sigma-book sigma-book-1"></div>
           <div className="sigma-book sigma-book-2"></div>
           <div className="sigma-book sigma-book-3"></div>
-
           <div className="sigma-desk"></div>
         </div>
 
         <div className="sigma-bg-grid"></div>
-
       </div>
 
 
@@ -57,16 +48,10 @@ function Hero() {
 
       <div className="sigma-hero-content">
 
-      
-        {/* MAIN AREA */}
         <div className="sigma-hero-main">
 
-
-    
-
-
           {/* =================================================
-              LEFT
+              LEFT CONTENT
           ================================================= */}
 
           <div className="sigma-hero-left">
@@ -96,7 +81,10 @@ function Hero() {
             </p>
 
 
-            {/* EXAMS */}
+            {/* =================================================
+                EXAM COVERAGE
+            ================================================= */}
+
             <div className="sigma-exam-section">
 
               <span className="sigma-exam-label">
@@ -110,7 +98,6 @@ function Hero() {
                     className={`sigma-exam-pill ${exam.type}`}
                     key={exam.name}
                   >
-
                     <span className="sigma-exam-icon">
                       {exam.type === "bpsc" && "B"}
                       {exam.type === "ssc" && "S"}
@@ -120,7 +107,6 @@ function Hero() {
                     </span>
 
                     <span>{exam.name}</span>
-
                   </div>
                 ))}
 
@@ -129,35 +115,40 @@ function Hero() {
             </div>
 
 
-            {/* BUTTONS */}
+            {/* =================================================
+                CTA BUTTONS
+            ================================================= */}
+
             <div className="sigma-hero-buttons">
 
               <a
                 href="/courses"
                 className="sigma-primary-button"
               >
-                Explore Courses
-                <ArrowRight size={20} />
+                <span>Explore Courses</span>
+                <ArrowRight size={19} />
               </a>
 
-
               <a
-                href="tel:+91 94712 68826" 
-
+                href="tel:+919471268826"
                 className="sigma-secondary-button"
               >
                 <Phone size={17} />
-                Talk to Us
+                <span>Talk to Us</span>
               </a>
 
             </div>
 
 
-            {/* TRUST POINTS */}
+            {/* =================================================
+                TRUST POINTS
+            ================================================= */}
+
             <div className="sigma-trust-row">
 
               <div className="sigma-trust-point">
-                <Users size={22} />
+                <Users size={21} />
+
                 <span>
                   Experienced
                   <br />
@@ -165,10 +156,13 @@ function Hero() {
                 </span>
               </div>
 
+
               <div className="sigma-trust-separator"></div>
 
+
               <div className="sigma-trust-point">
-                <BookOpen size={22} />
+                <BookOpen size={21} />
+
                 <span>
                   Focused Classroom
                   <br />
@@ -176,10 +170,13 @@ function Hero() {
                 </span>
               </div>
 
+
               <div className="sigma-trust-separator"></div>
 
+
               <div className="sigma-trust-point">
-                <Trophy size={22} />
+                <Trophy size={21} />
+
                 <span>
                   Proven
                   <br />
@@ -193,38 +190,49 @@ function Hero() {
 
 
           {/* =================================================
-              RIGHT
+              RIGHT CONTENT
           ================================================= */}
 
           <div className="sigma-hero-right">
 
-            {/* LARGE SIGMA BACKDROP */}
+            {/* Decorative Sigma */}
+
             <div className="sigma-right-mark">
               Σ
             </div>
 
 
-            {/* BRAND MARK */}
+            {/* Brand */}
+
             <div className="sigma-right-brand">
 
               <div className="sigma-right-symbol">
                 Σ
               </div>
 
-              <strong>SIGMA CLASSES</strong>
+              <strong>
+                SIGMA CLASSES
+              </strong>
 
-              <span>SASARAM • BIHAR</span>
+              <span>
+                SASARAM • BIHAR
+              </span>
 
               <div className="sigma-brand-rule">
                 <span></span>
-                <small>Competitive Exam Preparation</small>
+
+                <small>
+                  Competitive Exam Preparation
+                </small>
+
                 <span></span>
               </div>
 
             </div>
 
 
-            {/* FOUNDER IMAGE */}
+            {/* Founder */}
+
             <div className="sigma-founder-wrap">
 
               <div className="sigma-founder-red-light"></div>
@@ -238,7 +246,8 @@ function Hero() {
             </div>
 
 
-            {/* EXPERIENCE CARD */}
+            {/* Experience / Proof */}
+
             <div className="sigma-proof-card">
 
               <div className="sigma-proof-years">
@@ -266,22 +275,30 @@ function Hero() {
 
                 <div className="sigma-proof-stat">
 
-                  <Users size={29} />
+                  <Users size={27} />
 
-                  <strong>1,000+</strong>
+                  <strong>
+                    1,000+
+                  </strong>
 
-                  <span>Students Guided</span>
+                  <span>
+                    Students Guided
+                  </span>
 
                 </div>
 
 
                 <div className="sigma-proof-stat">
 
-                  <Trophy size={29} />
+                  <Trophy size={27} />
 
-                  <strong>100+</strong>
+                  <strong>
+                    100+
+                  </strong>
 
-                  <span>Selections</span>
+                  <span>
+                    Selections
+                  </span>
 
                 </div>
 
@@ -290,7 +307,8 @@ function Hero() {
             </div>
 
 
-            {/* FOUNDER SIGNATURE */}
+            {/* Founder Caption */}
+
             <div className="sigma-founder-caption">
 
               <div className="sigma-signature">
@@ -301,7 +319,9 @@ function Hero() {
 
               <div className="sigma-signature-line"></div>
 
-              <strong>Director &amp; CEO</strong>
+              <strong>
+                Director &amp; CEO
+              </strong>
 
               <span>
                 EX FACULTY DACE, B.H.U &amp; RAU, Varanasi
@@ -317,7 +337,7 @@ function Hero() {
 
 
       {/* =====================================================
-          FULL WIDTH BOTTOM BAR
+          BOTTOM PROOF BAR
       ===================================================== */}
 
       <div className="sigma-hero-bottom">
@@ -327,12 +347,17 @@ function Hero() {
           <div className="sigma-bottom-item">
 
             <div className="sigma-bottom-icon red">
-              <Users size={28} />
+              <Users size={27} />
             </div>
 
             <div>
-              <strong>1,000+</strong>
-              <span>Students Guided</span>
+              <strong>
+                1,000+
+              </strong>
+
+              <span>
+                Students Guided
+              </span>
             </div>
 
           </div>
@@ -344,11 +369,14 @@ function Hero() {
           <div className="sigma-bottom-item">
 
             <div className="sigma-bottom-icon gold">
-              <Trophy size={28} />
+              <Trophy size={27} />
             </div>
 
             <div>
-              <strong>100+</strong>
+              <strong>
+                100+
+              </strong>
+
               <span>
                 Selections Across
                 <br />
@@ -365,12 +393,17 @@ function Hero() {
           <div className="sigma-bottom-item">
 
             <div className="sigma-bottom-icon red">
-              <CalendarDays size={28} />
+              <CalendarDays size={27} />
             </div>
 
             <div>
-              <strong>15+</strong>
-              <span>Years Teaching Experience</span>
+              <strong>
+                15+
+              </strong>
+
+              <span>
+                Years Teaching Experience
+              </span>
             </div>
 
           </div>
@@ -382,12 +415,17 @@ function Hero() {
           <div className="sigma-bottom-location">
 
             <div className="sigma-bottom-icon red">
-              <MapPin size={28} />
+              <MapPin size={27} />
             </div>
 
             <div>
-              <strong>SASARAM, BIHAR</strong>
-              <span>Your Success, Our Commitment.</span>
+              <strong>
+                SASARAM, BIHAR
+              </strong>
+
+              <span>
+                Your Success, Our Commitment.
+              </span>
             </div>
 
           </div>

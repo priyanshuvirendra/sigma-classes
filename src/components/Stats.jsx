@@ -1,26 +1,31 @@
-import { Users, Trophy, BookOpen, Award } from "lucide-react";
+import {
+  Users,
+  ClipboardCheck,
+  MessageCircleQuestion,
+  Trophy,
+} from "lucide-react";
 
 function Stats() {
   const stats = [
     {
       icon: Users,
-      number: "1,000+",
-      label: "Students Guided",
+      title: "Experienced Faculty",
+      description: "Learn from dedicated and experienced teachers",
+    },
+    {
+      icon: ClipboardCheck,
+      title: "Regular Mock Tests",
+      description: "Practice with exam-focused tests",
+    },
+    {
+      icon: MessageCircleQuestion,
+      title: "Personal Doubt Support",
+      description: "Get help whenever you need it",
     },
     {
       icon: Trophy,
-      number: "100+",
-      label: "Selections Across Competitive Exams",
-    },
-    {
-      icon: BookOpen,
-      number: "15+",
-      label: "Years Teaching Experience",
-    },
-    {
-      icon: Award,
-      number: "BPSC • SSC • BANK",
-      label: "Teacher TRE • TET & Other Exams",
+      title: "Result Focused",
+      description: "Preparation designed around real exam outcomes",
     },
   ];
 
@@ -31,12 +36,12 @@ function Stats() {
           const Icon = stat.icon;
 
           return (
-            <div className="stat-item" key={stat.label}>
+            <div className="stat-item" key={stat.title}>
               <Icon size={24} />
 
               <div>
-                <strong>{stat.number}</strong>
-                <span>{stat.label}</span>
+                <strong>{stat.title}</strong>
+                <span>{stat.description}</span>
               </div>
             </div>
           );
