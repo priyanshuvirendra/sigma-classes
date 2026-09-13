@@ -55,7 +55,7 @@ function Footer() {
 
             <h4>Quick Links</h4>
 
-            <a href="/home">
+            <a href="#home">
               Home
             </a>
 
@@ -63,18 +63,17 @@ function Footer() {
               Courses
             </a>
 
-            <a href="#faculty">
-              Faculty
-            </a>
+           <a href="/#faculty">
+  Faculty
+</a>
 
-            <a href="#results">
-              Results
-            </a>
+<a href="/#results">
+  Results
+</a>
 
-            <a href="#contact">
-              Contact
-            </a>
-
+<a href="/#contact">
+  Contact
+</a>
           </div>
 
 
