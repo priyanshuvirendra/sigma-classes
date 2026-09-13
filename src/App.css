@@ -1011,6 +1011,52 @@ button {
   color: #ffffff;
 }
 
+.cta-buttons .btn {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cta-buttons .btn:hover {
+  transform: translateY(-2px);
+}
+
+.cta-buttons .btn-light {
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #111111;
+}
+
+.cta-buttons .btn-light:hover {
+  background: #f5f5f5;
+  border-color: #f5f5f5;
+  color: #111111;
+}
+
+.cta-buttons .btn-outline-light {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: #ffffff;
+}
+
+.cta-buttons .btn-outline-light:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #111111;
+}
 
 /* =========================================================
    FOOTER
