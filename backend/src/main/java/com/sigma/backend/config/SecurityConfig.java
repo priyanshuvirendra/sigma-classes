@@ -154,10 +154,12 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
 
         CorsConfiguration configuration = new CorsConfiguration();
-configuration.setAllowedOrigins(
-        List.of(
-                "http://localhost:5173",
-                "https://sigma-classes.onrender.com"));
+configuration.setAllowedOrigins(List.of(
+    "http://localhost:5173",
+    "https://sigma-classes.onrender.com",
+    "https://sigmaclassesssm.in",
+    "https://www.sigmaclassesssm.in"
+));
 
         configuration.setAllowedMethods(
                 List.of(
