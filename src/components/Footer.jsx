@@ -71,7 +71,7 @@ function Footer() {
   Results
 </a>
 
-<a href="/#contact">
+<a href="/#enquiry">
   Contact
 </a>
           </div>
