@@ -55,7 +55,7 @@ function Footer() {
 
             <h4>Quick Links</h4>
 
-            <a href="#home">
+            <a href="/#home">
               Home
             </a>
 

@@ -38878,3 +38878,57 @@ body {
   }
 
 }
+
+
+/* =====================================================
+   GOOGLE LOGIN
+===================================================== */
+
+.student-login-google-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 48px;
+    margin-top: 2px;
+}
+
+.student-login-google-button {
+    width: 100%;
+    max-width: 400px;
+
+    min-height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* Keep Google's generated button visually contained */
+
+.student-login-google-button > div {
+    max-width: 100%;
+}
+
+
+/* Loading message */
+
+.student-login-google-wrapper + p {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    .student-login-google-button {
+        max-width: 100%;
+    }
+
+}

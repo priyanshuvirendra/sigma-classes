@@ -78,13 +78,13 @@ function StudentLogin() {
             window.google.accounts.id.renderButton(
                 googleButtonRef.current,
                 {
-                    theme: "outline",
-                    size: "large",
-                    width: 360,
-                    text: "continue_with",
-                    shape: "rectangular",
-                    logo_alignment: "left",
-                }
+    theme: "outline",
+    size: "large",
+    width: 400,
+    text: "continue_with",
+    shape: "rectangular",
+    logo_alignment: "center",
+}
             );
 
             return true;
@@ -752,25 +752,12 @@ function StudentLogin() {
                         {/* =================================================
                             GOOGLE LOGIN
                         ================================================= */}
-
-                        <div
-                            className="student-login-google-wrapper"
-                            style={{
-                                width: "100%",
-                                display: "flex",
-                                justifyContent: "center",
-                                minHeight: "44px",
-                            }}
-                        >
-
-                            <div
-                                ref={googleButtonRef}
-                                style={{
-                                    minHeight: "44px",
-                                }}
-                            />
-
-                        </div>
+<div className="student-login-google-wrapper">
+    <div
+        ref={googleButtonRef}
+        className="student-login-google-button"
+    />
+</div>
 
 
                         {googleLoading && (
