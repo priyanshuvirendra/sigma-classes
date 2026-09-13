@@ -55,7 +55,7 @@ public class SecurityConfig {
                                 HttpMethod.POST,
                                 "/api/enquiries")
                         .permitAll()
-
+.requestMatchers("/api/health").permitAll()
                         // Admin login
                         .requestMatchers(
                                 HttpMethod.POST,

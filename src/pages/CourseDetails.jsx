@@ -490,16 +490,12 @@ function CourseDetails() {
       )
       : "Contact us";
 
+// =====================================================
+// WHATSAPP
+// =====================================================
 
-  // =====================================================
-  // WHATSAPP
-  // =====================================================
-
-  const whatsappMessage =
-    encodeURIComponent(
-      `Hello, I want to enquire about the ${course.name} course.`
-    );
-
+const whatsappMessage =
+    `Hello, I want to enquire about the ${course.name} course.`;
 
   // =====================================================
   // GOOGLE DRIVE PDF EMBED URL
