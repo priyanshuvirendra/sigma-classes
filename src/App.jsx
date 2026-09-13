@@ -1,9 +1,12 @@
 import "./App.css";
 
+import { useEffect } from "react";
+
 import {
   BrowserRouter,
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
 
 import CourseDetails from "./pages/CourseDetails";
@@ -41,7 +44,28 @@ import FacultyMaterials from "./pages/FacultyMaterials";
 import FacultyYoutube from "./pages/FacultyYoutube";
 import FacultyProfile from "./pages/FacultyProfile";
 
+function ScrollToHash() {
+  const location = useLocation();
 
+  React.useEffect(() => {
+    if (!location.hash) return;
+
+    const id = location.hash.substring(1);
+
+    setTimeout(() => {
+      const element = document.getElementById(id);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
+  }, [location]);
+
+  return null;
+}
 
 function Home() {
   return (
@@ -243,10 +267,11 @@ function Home() {
 
 function App() {
   return (
-    <BrowserRouter>
+   <BrowserRouter>
 
-      <Routes>
+  <ScrollToHash />
 
+  <Routes>
 
         {/* =====================================================
             HOME PAGE
