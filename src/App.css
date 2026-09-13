@@ -38657,3 +38657,35 @@ body {
   justify-content: center;
   margin-top: 5px;
 }
+
+/* =========================================================
+   CLICKABLE COURSE CARD
+========================================================= */
+
+.courses-grid .course-card {
+  display: block;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.courses-grid .course-card:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.courses-grid .course-card .course-link {
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .courses-grid .course-card {
+    width: 100%;
+  }
+}

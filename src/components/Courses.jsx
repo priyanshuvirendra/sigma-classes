@@ -351,11 +351,11 @@ useEffect(() => {
               getCourseIcon(course.category);
 
             return (
-
-              <article
-                className="course-card"
-                key={course.id}
-              >
+<Link
+  to={`/courses/${course.id}`}
+  className="course-card"
+  key={course.id}
+>
 
                 <div className="course-top">
 
@@ -460,19 +460,11 @@ useEffect(() => {
 
 
                 {/* COURSE LINK */}
-
-                <a
-                  href={`/courses/${course.id}`}
-                  className="course-link"
-                >
-
-                  View Course
-
-                  <ArrowUpRight size={18} />
-
-                </a>
-
-              </article>
+<span className="course-link">
+  View Course
+  <ArrowUpRight size={18} />
+</span>
+</Link>
 
             );
 
