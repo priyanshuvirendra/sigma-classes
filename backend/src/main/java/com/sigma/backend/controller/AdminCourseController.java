@@ -208,32 +208,42 @@ public class AdminCourseController {
         );
     }
 
+// =====================================================
+// ARCHIVE COURSE
+// =====================================================
 
-    // =====================================================
-    // DELETE COURSE
-    // =====================================================
+@DeleteMapping("/{id}")
+public ResponseEntity<Void> deleteCourse(
+        @PathVariable Long id
+) {
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCourse(
-            @PathVariable Long id
-    ) {
+    Course course =
+            courseRepository
+                    .findById(id)
+                    .orElse(null);
 
-        if (
-                !courseRepository
-                        .existsById(id)
-        ) {
-
-            return ResponseEntity
-                    .notFound()
-                    .build();
-        }
-
-
-        courseRepository.deleteById(id);
-
+    if (course == null) {
 
         return ResponseEntity
-                .noContent()
+                .notFound()
                 .build();
     }
+
+    /*
+     * Do not physically delete the course.
+     *
+     * Existing enrollments and other course-related
+     * records may still reference this course.
+     *
+     * Instead, mark the course as inactive.
+     */
+
+    course.setActive(false);
+
+    courseRepository.save(course);
+
+    return ResponseEntity
+            .noContent()
+            .build();
+}
 }
