@@ -24,212 +24,172 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:5173")
 public class FacultyController {
 
-    private final FacultyRepository facultyRepository;
-    private final CourseRepository courseRepository;
-    private final EnrollmentRepository enrollmentRepository;
+        private final FacultyRepository facultyRepository;
+        private final CourseRepository courseRepository;
+        private final EnrollmentRepository enrollmentRepository;
         private final StudyMaterialRepository studyMaterialRepository;
-    private final JwtService jwtService;
+        private final JwtService jwtService;
 
+        // =====================================================
+        // CONSTRUCTOR
+        // =====================================================
 
-    // =====================================================
-    // CONSTRUCTOR
-    // =====================================================
-
-    public FacultyController(
-            FacultyRepository facultyRepository,
-            CourseRepository courseRepository,
-            EnrollmentRepository enrollmentRepository,
-            StudyMaterialRepository studyMaterialRepository,
-            JwtService jwtService
-    ) {
-        this.facultyRepository = facultyRepository;
-        this.courseRepository = courseRepository;
-        this.enrollmentRepository = enrollmentRepository;
-        this.studyMaterialRepository = studyMaterialRepository;
-        this.jwtService = jwtService;
-    }
-
-
-    // =====================================================
-    // GET STUDENTS OF LOGGED-IN FACULTY
-    // =====================================================
-@GetMapping("/students")
-public ResponseEntity<?> getMyStudents(
-        @RequestHeader("Authorization") String authHeader,
-        @RequestParam(required = false) Long courseId
-)  {
-
-        if (
-                authHeader == null ||
-                !authHeader.startsWith("Bearer ")
-        ) {
-            return ResponseEntity
-                    .status(401)
-                    .body(
-                            Map.of(
-                                    "message",
-                                    "Missing or invalid authorization token"
-                            )
-                    );
+        public FacultyController(
+                        FacultyRepository facultyRepository,
+                        CourseRepository courseRepository,
+                        EnrollmentRepository enrollmentRepository,
+                        StudyMaterialRepository studyMaterialRepository,
+                        JwtService jwtService) {
+                this.facultyRepository = facultyRepository;
+                this.courseRepository = courseRepository;
+                this.enrollmentRepository = enrollmentRepository;
+                this.studyMaterialRepository = studyMaterialRepository;
+                this.jwtService = jwtService;
         }
 
-        String token = authHeader.substring(7);
+        // =====================================================
+        // GET STUDENTS OF LOGGED-IN FACULTY
+        // =====================================================
+        @GetMapping("/students")
+        public ResponseEntity<?> getMyStudents(
+                        @RequestHeader("Authorization") String authHeader,
+                        @RequestParam(required = false) Long courseId) {
 
-        try {
-
-            // =====================================================
-            // VERIFY TOKEN
-            // =====================================================
-
-            if (!jwtService.isTokenValid(token)) {
-
-                return ResponseEntity
-                        .status(401)
-                        .body(
-                                Map.of(
-                                        "message",
-                                        "Invalid or expired token"
-                                )
-                        );
-            }
-
-
-            // =====================================================
-            // EXTRACT FACULTY INFORMATION
-            // =====================================================
-
-            String username =
-                    jwtService.extractUsername(token);
-
-            String role =
-                    jwtService.extractRole(token);
-
-
-            if (!"FACULTY".equals(role)) {
-
-                return ResponseEntity
-                        .status(403)
-                        .body(
-                                Map.of(
-                                        "message",
-                                        "Faculty access required"
-                                )
-                        );
-            }
-
-
-            // =====================================================
-            // FIND COURSES ASSIGNED TO FACULTY
-            // =====================================================
-
-            List<Course> courses =
-                    courseRepository
-                            .findCoursesByFacultyUsername(username);
-
-if (courseId != null) {
-
-    courses = courses.stream()
-            .filter(course -> course.getId().equals(courseId))
-            .toList();
-}
-            // =====================================================
-            // FIND STUDENTS
-            // =====================================================
-
-            List<Map<String, Object>> students =
-                    new ArrayList<>();
-
-
-            for (Course course : courses) {
-
-                List<Enrollment> enrollments =
-                        enrollmentRepository
-                                .findByCourseIdAndStatus(
-                                        course.getId(),
-                                        "ACTIVE"
-                                );
-
-
-                for (Enrollment enrollment : enrollments) {
-
-                    Student student =
-                            enrollment.getStudent();
-
-
-                    Map<String, Object> studentData =
-                            new HashMap<>();
-
-
-                    studentData.put(
-                            "enrollmentId",
-                            enrollment.getId()
-                    );
-
-                    studentData.put(
-                            "studentId",
-                            student.getId()
-                    );
-
-                    studentData.put(
-                            "name",
-                            student.getName()
-                    );
-
-                    studentData.put(
-                            "email",
-                            student.getEmail()
-                    );
-
-                    studentData.put(
-                            "phone",
-                            student.getPhone()
-                    );
-
-                    studentData.put(
-                            "courseId",
-                            course.getId()
-                    );
-
-                    studentData.put(
-                            "courseName",
-                            course.getName()
-                    );
-
-                    studentData.put(
-                            "status",
-                            enrollment.getStatus()
-                    );
-
-                    studentData.put(
-                            "enrolledAt",
-                            enrollment.getEnrolledAt()
-                    );
-
-                    students.add(studentData);
+                if (authHeader == null ||
+                                !authHeader.startsWith("Bearer ")) {
+                        return ResponseEntity
+                                        .status(401)
+                                        .body(
+                                                        Map.of(
+                                                                        "message",
+                                                                        "Missing or invalid authorization token"));
                 }
-            }
 
+                String token = authHeader.substring(7);
 
-            // =====================================================
-            // RETURN STUDENTS
-            // =====================================================
+                try {
 
-            return ResponseEntity.ok(students);
+                        // =====================================================
+                        // VERIFY TOKEN
+                        // =====================================================
 
+                        if (!jwtService.isTokenValid(token)) {
 
-        } catch (Exception e) {
+                                return ResponseEntity
+                                                .status(401)
+                                                .body(
+                                                                Map.of(
+                                                                                "message",
+                                                                                "Invalid or expired token"));
+                        }
 
-            e.printStackTrace();
+                        // =====================================================
+                        // EXTRACT FACULTY INFORMATION
+                        // =====================================================
 
-            return ResponseEntity
-                    .status(401)
-                    .body(
-                            Map.of(
-                                    "message",
-                                    "Invalid or expired token"
-                            )
-                    );
+                        String username = jwtService.extractUsername(token);
+
+                        String role = jwtService.extractRole(token);
+
+                        if (!"FACULTY".equals(role)) {
+
+                                return ResponseEntity
+                                                .status(403)
+                                                .body(
+                                                                Map.of(
+                                                                                "message",
+                                                                                "Faculty access required"));
+                        }
+
+                        // =====================================================
+                        // FIND COURSES ASSIGNED TO FACULTY
+                        // =====================================================
+
+                        List<Course> courses = courseRepository
+                                        .findCoursesByFacultyUsername(username);
+
+                        if (courseId != null) {
+
+                                courses = courses.stream()
+                                                .filter(course -> course.getId().equals(courseId))
+                                                .toList();
+                        }
+                        // =====================================================
+                        // FIND STUDENTS
+                        // =====================================================
+
+                        List<Map<String, Object>> students = new ArrayList<>();
+
+                        for (Course course : courses) {
+
+                                List<Enrollment> enrollments = enrollmentRepository
+                                                .findByCourseIdAndStatus(
+                                                                course.getId(),
+                                                                "ACTIVE");
+
+                                for (Enrollment enrollment : enrollments) {
+
+                                        Student student = enrollment.getStudent();
+
+                                        Map<String, Object> studentData = new HashMap<>();
+
+                                        studentData.put(
+                                                        "enrollmentId",
+                                                        enrollment.getId());
+
+                                        studentData.put(
+                                                        "studentId",
+                                                        student.getId());
+
+                                        studentData.put(
+                                                        "name",
+                                                        student.getName());
+
+                                        studentData.put(
+                                                        "email",
+                                                        student.getEmail());
+
+                                        studentData.put(
+                                                        "phone",
+                                                        student.getPhone());
+
+                                        studentData.put(
+                                                        "courseId",
+                                                        course.getId());
+
+                                        studentData.put(
+                                                        "courseName",
+                                                        course.getName());
+
+                                        studentData.put(
+                                                        "status",
+                                                        enrollment.getStatus());
+
+                                        studentData.put(
+                                                        "enrolledAt",
+                                                        enrollment.getEnrolledAt());
+
+                                        students.add(studentData);
+                                }
+                        }
+
+                        // =====================================================
+                        // RETURN STUDENTS
+                        // =====================================================
+
+                        return ResponseEntity.ok(students);
+
+                } catch (Exception e) {
+
+                        e.printStackTrace();
+
+                        return ResponseEntity
+                                        .status(401)
+                                        .body(
+                                                        Map.of(
+                                                                        "message",
+                                                                        "Invalid or expired token"));
+                }
         }
-    }
 
 }

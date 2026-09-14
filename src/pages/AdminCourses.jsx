@@ -488,8 +488,7 @@ if (!response.ok) {
         }
     };
 
-
-    // =========================================================
+// =========================================================
 // RESTORE COURSE
 // =========================================================
 
@@ -512,19 +511,14 @@ const restoreCourse = async (id) => {
         setError("");
 
         const response = await fetch(
-            `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${id}`,
+            `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${id}/restore`,
             {
                 method: "PUT",
 
                 headers: {
-                    "Content-Type": "application/json",
                     Authorization:
                         `Bearer ${currentToken}`,
                 },
-
-                body: JSON.stringify({
-                    active: true,
-                }),
             }
         );
 
@@ -566,7 +560,6 @@ const restoreCourse = async (id) => {
         );
     }
 };
-
     // =========================================================
     // RENDER ARRAY FIELD
     // =========================================================

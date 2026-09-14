@@ -13,207 +13,160 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:5173")
 public class AdminCourseController {
 
-    private final CourseRepository courseRepository;
+        private final CourseRepository courseRepository;
 
-
-    public AdminCourseController(
-            CourseRepository courseRepository
-    ) {
-        this.courseRepository = courseRepository;
-    }
-
-
-    // =====================================================
-    // GET ALL COURSES
-    // =====================================================
-
-    @GetMapping
-    public ResponseEntity<List<Course>> getAllCourses() {
-
-        return ResponseEntity.ok(
-                courseRepository.findAll()
-        );
-    }
-
-
-    // =====================================================
-    // CREATE COURSE
-    // =====================================================
-
-    @PostMapping
-    public ResponseEntity<Course> createCourse(
-            @RequestBody Course course
-    ) {
-
-        /*
-         * Make sure a new course gets a new database ID.
-         */
-
-        course.setId(null);
-
-
-        Course savedCourse =
-                courseRepository.save(course);
-
-
-        return ResponseEntity.ok(
-                savedCourse
-        );
-    }
-
-
-    // =====================================================
-    // GET COURSE BY ID
-    // =====================================================
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Course> getCourse(
-            @PathVariable Long id
-    ) {
-
-        return courseRepository
-                .findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(
-                        ResponseEntity
-                                .notFound()
-                                .build()
-                );
-    }
-
-
-    // =====================================================
-    // UPDATE COURSE
-    // =====================================================
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Course> updateCourse(
-            @PathVariable Long id,
-            @RequestBody Course courseData
-    ) {
-
-        Course course =
-                courseRepository
-                        .findById(id)
-                        .orElse(null);
-
-
-        if (course == null) {
-
-            return ResponseEntity
-                    .notFound()
-                    .build();
+        public AdminCourseController(
+                        CourseRepository courseRepository) {
+                this.courseRepository = courseRepository;
         }
 
+        // =====================================================
+        // GET ALL COURSES
+        // =====================================================
 
-        // =================================================
-        // BASIC INFORMATION
-        // =================================================
+        @GetMapping
+        public ResponseEntity<List<Course>> getAllCourses() {
 
-        course.setName(
-                courseData.getName()
-        );
+                return ResponseEntity.ok(
+                                courseRepository.findAll());
+        }
 
+        // =====================================================
+        // CREATE COURSE
+        // =====================================================
 
-        course.setDescription(
-                courseData.getDescription()
-        );
+        @PostMapping
+        public ResponseEntity<Course> createCourse(
+                        @RequestBody Course course) {
 
+                /*
+                 * Make sure a new course gets a new database ID.
+                 */
 
-        course.setCategory(
-                courseData.getCategory()
-        );
+                course.setId(null);
 
+                Course savedCourse = courseRepository.save(course);
 
-        course.setDuration(
-                courseData.getDuration()
-        );
+                return ResponseEntity.ok(
+                                savedCourse);
+        }
 
+        // =====================================================
+        // GET COURSE BY ID
+        // =====================================================
 
-        course.setPrice(
-                courseData.getPrice()
-        );
+        @GetMapping("/{id}")
+        public ResponseEntity<Course> getCourse(
+                        @PathVariable Long id) {
 
+                return courseRepository
+                                .findById(id)
+                                .map(ResponseEntity::ok)
+                                .orElse(
+                                                ResponseEntity
+                                                                .notFound()
+                                                                .build());
+        }
 
-        course.setImageUrl(
-                courseData.getImageUrl()
-        );
+        // =====================================================
+        // UPDATE COURSE
+        // =====================================================
 
+        @PutMapping("/{id}")
+        public ResponseEntity<Course> updateCourse(
+                        @PathVariable Long id,
+                        @RequestBody Course courseData) {
 
-        course.setActive(
-                courseData.isActive()
-        );
+                Course course = courseRepository
+                                .findById(id)
+                                .orElse(null);
 
+                if (course == null) {
 
-        // =================================================
-        // ADDITIONAL INFORMATION
-        // =================================================
+                        return ResponseEntity
+                                        .notFound()
+                                        .build();
+                }
 
-        course.setStartDate(
-                courseData.getStartDate()
-        );
+                // =================================================
+                // BASIC INFORMATION
+                // =================================================
 
+                course.setName(
+                                courseData.getName());
 
-        course.setMode(
-                courseData.getMode()
-        );
+                course.setDescription(
+                                courseData.getDescription());
 
+                course.setCategory(
+                                courseData.getCategory());
 
-        // =================================================
-        // CURRICULUM
-        // =================================================
+                course.setDuration(
+                                courseData.getDuration());
 
-        course.setCurriculum(
-                courseData.getCurriculum()
-        );
+                course.setPrice(
+                                courseData.getPrice());
 
+                course.setImageUrl(
+                                courseData.getImageUrl());
 
-        // =================================================
-        // FACULTY
-        // =================================================
+                course.setActive(
+                                courseData.isActive());
 
-        course.setFaculty(
-                courseData.getFaculty()
-        );
+                // =================================================
+                // ADDITIONAL INFORMATION
+                // =================================================
 
+                course.setStartDate(
+                                courseData.getStartDate());
 
-        // =================================================
-        // FEATURES
-        // =================================================
+                course.setMode(
+                                courseData.getMode());
 
-        course.setFeatures(
-                courseData.getFeatures()
-        );
+                // =================================================
+                // CURRICULUM
+                // =================================================
 
+                course.setCurriculum(
+                                courseData.getCurriculum());
 
-        // =================================================
-        // TAGS
-        // =================================================
+                // =================================================
+                // FACULTY
+                // =================================================
 
-        course.setTags(
-                courseData.getTags()
-        );
+                course.setFaculty(
+                                courseData.getFaculty());
 
+                // =================================================
+                // FEATURES
+                // =================================================
 
-        // =================================================
-        // SAVE
-        // =================================================
+                course.setFeatures(
+                                courseData.getFeatures());
 
-        Course updatedCourse =
-                courseRepository.save(course);
+                // =================================================
+                // TAGS
+                // =================================================
 
+                course.setTags(
+                                courseData.getTags());
 
-        return ResponseEntity.ok(
-                updatedCourse
-        );
-    }
+                // =================================================
+                // SAVE
+                // =================================================
 
+                Course updatedCourse = courseRepository.save(course);
+
+                return ResponseEntity.ok(
+                                updatedCourse);
+        }
+
+        // =====================================================
+// RESTORE COURSE
 // =====================================================
-// ARCHIVE COURSE
-// =====================================================
 
-@DeleteMapping("/{id}")
-public ResponseEntity<Void> deleteCourse(
+@PutMapping("/{id}/restore")
+public ResponseEntity<Course> restoreCourse(
         @PathVariable Long id
 ) {
 
@@ -223,27 +176,52 @@ public ResponseEntity<Void> deleteCourse(
                     .orElse(null);
 
     if (course == null) {
-
         return ResponseEntity
                 .notFound()
                 .build();
     }
 
-    /*
-     * Do not physically delete the course.
-     *
-     * Existing enrollments and other course-related
-     * records may still reference this course.
-     *
-     * Instead, mark the course as inactive.
-     */
+    course.setActive(true);
 
-    course.setActive(false);
+    Course restoredCourse =
+            courseRepository.save(course);
 
-    courseRepository.save(course);
-
-    return ResponseEntity
-            .noContent()
-            .build();
+    return ResponseEntity.ok(restoredCourse);
 }
+        // =====================================================
+        // ARCHIVE COURSE
+        // =====================================================
+
+        @DeleteMapping("/{id}")
+        public ResponseEntity<Void> deleteCourse(
+                        @PathVariable Long id) {
+
+                Course course = courseRepository
+                                .findById(id)
+                                .orElse(null);
+
+                if (course == null) {
+
+                        return ResponseEntity
+                                        .notFound()
+                                        .build();
+                }
+
+                /*
+                 * Do not physically delete the course.
+                 *
+                 * Existing enrollments and other course-related
+                 * records may still reference this course.
+                 *
+                 * Instead, mark the course as inactive.
+                 */
+
+                course.setActive(false);
+
+                courseRepository.save(course);
+
+                return ResponseEntity
+                                .noContent()
+                                .build();
+        }
 }
