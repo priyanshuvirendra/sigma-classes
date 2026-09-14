@@ -480,7 +480,12 @@ private String buildEnrollmentApprovedEmail(
         .replace(
                 "${dashboardUrl}",
                 dashboardUrl
-        );
+        )
+
+        .replace(
+    "</body>",
+    getEmailFooter() + "</body>"
+);
 }
 
 private String buildVerificationEmail(
@@ -692,7 +697,11 @@ private String buildVerificationEmail(
             .replace(
                     "${verificationUrl}",
                     verificationUrl
-            );
+            )
+            .replace(
+    "</body>",
+    getEmailFooter() + "</body>"
+);
 }
 
    private String buildWelcomeEmail(
@@ -926,8 +935,11 @@ private String buildVerificationEmail(
 .replace(
         "${loginUrl}",
         loginUrl
+)
+.replace(
+    "</body>",
+    getEmailFooter() + "</body>"
 );
-
 }
 // =====================================================
 // BUILD PASSWORD RESET EMAIL
@@ -1137,7 +1149,11 @@ private String buildPasswordResetEmail(
             .replace(
                     "${resetUrl}",
                     resetUrl
-            );
+            )
+            .replace(
+    "</body>",
+    getEmailFooter() + "</body>"
+);
 }
 
 private String buildEnrollmentRequestEmail(
@@ -1433,7 +1449,111 @@ private String buildEnrollmentRequestEmail(
         .replace("${courseCategory}", escapeHtml(courseCategory))
         .replace("${courseDuration}", escapeHtml(courseDuration))
         .replace("${courseMode}", escapeHtml(courseMode))
-        .replace("${dashboardUrl}", dashboardUrl);
+        .replace("${dashboardUrl}", dashboardUrl)
+        .replace(
+    "</body>",
+    getEmailFooter() + "</body>"
+);
+}
+
+
+private String getEmailFooter() {
+    return """
+        <table
+            role="presentation"
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            style="
+                margin-top:35px;
+                background-color:#111111;
+                border-radius:0 0 12px 12px;
+            "
+        >
+            <tr>
+                <td
+                    align="center"
+                    style="
+                        padding:28px 24px;
+                        font-family:Arial,Helvetica,sans-serif;
+                    "
+                >
+
+                    <div style="
+                        font-size:20px;
+                        font-weight:700;
+                        color:#ffffff;
+                        margin-bottom:8px;
+                    ">
+                        Sigma
+                        <span style="color:#ffc400;">Classes</span>
+                    </div>
+
+                    <div style="
+                        font-size:12px;
+                        color:#aaaaaa;
+                        letter-spacing:1px;
+                        margin-bottom:20px;
+                    ">
+                        YOUR PREPARATION. YOUR PROGRESS.
+                    </div>
+
+                    <div style="margin-bottom:10px;">
+                        <a
+                            href="https://sigmaclassesssm.in"
+                            style="
+                                color:#ffc400;
+                                font-size:13px;
+                                font-weight:600;
+                                text-decoration:none;
+                            "
+                        >
+                            www.sigmaclassesssm.in
+                        </a>
+                    </div>
+
+                    <div style="margin-bottom:20px;">
+                        <a
+                            href="mailto:noreply@sigmaclassesssm.in"
+                            style="
+                                color:#aaaaaa;
+                                font-size:12px;
+                                text-decoration:none;
+                            "
+                        >
+                            noreply@sigmaclassesssm.in
+                        </a>
+                    </div>
+
+                    <div style="
+                        height:1px;
+                        background-color:#292929;
+                        margin:0 auto 18px;
+                        max-width:420px;
+                    "></div>
+
+                    <div style="
+                        color:#777777;
+                        font-size:11px;
+                        line-height:1.6;
+                    ">
+                        © 2026 Sigma Classes. All rights reserved.
+                    </div>
+
+                    <div style="
+                        color:#666666;
+                        font-size:11px;
+                        line-height:1.6;
+                        margin-top:4px;
+                    ">
+                        This is an automated email. Please do not reply to this message.
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+        """;
 }
 
     private String escapeHtml(String value) {
