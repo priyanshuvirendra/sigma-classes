@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import {
     Plus,
     Pencil,
-    Trash2,
+Archive,
+RotateCcw,
     Save,
     X,
     RefreshCw,
@@ -421,11 +422,11 @@ curriculum:
     // DELETE COURSE
     // =========================================================
 
-    const deleteCourse = async (id) => {
-        const confirmed =
-            window.confirm(
-                "Are you sure you want to delete this course?"
-            );
+const archiveCourse = async (id) => {
+  const confirmed =
+    window.confirm(
+        "Are you sure you want to archive this course? It will no longer appear as an active course, but existing student enrollments and records will be preserved."
+    );
 
         if (!confirmed) {
             return;
@@ -460,12 +461,11 @@ curriculum:
                 return;
             }
 
-            if (!response.ok) {
-                throw new Error(
-                    "Failed to delete course."
-                );
-            }
-
+if (!response.ok) {
+    throw new Error(
+        "Failed to archive course."
+    );
+}
             setCourses((prev) =>
                 prev.filter(
                     (course) =>
@@ -483,14 +483,94 @@ curriculum:
 
             setError(
                 err.message ||
-                "Unable to delete course."
+                "Unable to achive course."
             );
         }
     };
 
+
+    // =========================================================
+// RESTORE COURSE
+// =========================================================
+
+const restoreCourse = async (id) => {
+
+    const confirmed =
+        window.confirm(
+            "Are you sure you want to restore this course? It will become active and visible to students again."
+        );
+
+    if (!confirmed) {
+        return;
+    }
+
+    const currentToken =
+        localStorage.getItem("adminToken");
+
+    try {
+
+        setError("");
+
+        const response = await fetch(
+            `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${id}`,
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization:
+                        `Bearer ${currentToken}`,
+                },
+
+                body: JSON.stringify({
+                    active: true,
+                }),
+            }
+        );
+
+        if (
+            response.status === 401 ||
+            response.status === 403
+        ) {
+            setError(
+                "You are not authorized."
+            );
+
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(
+                "Failed to restore course."
+            );
+        }
+
+        const restoredCourse =
+            await response.json();
+
+        setCourses((prev) =>
+            prev.map((course) =>
+                course.id === id
+                    ? restoredCourse
+                    : course
+            )
+        );
+
+    } catch (err) {
+
+        console.error(err);
+
+        setError(
+            err.message ||
+            "Unable to restore course."
+        );
+    }
+};
+
     // =========================================================
     // RENDER ARRAY FIELD
     // =========================================================
+
 
     const renderArrayField = (
         field,
@@ -1031,36 +1111,38 @@ curriculum:
                                             <td>
 
                                                 <div className="admin-course-row-actions">
+<button
+    type="button"
+    className="admin-edit"
+    onClick={() => editCourse(course)}
+    title="Edit course"
+>
+    <Pencil size={16} />
+</button>
 
-                                                    <button
-                                                        type="button"
-                                                        className="admin-edit"
-                                                        onClick={() =>
-                                                            editCourse(
-                                                                course
-                                                            )
-                                                        }
-                                                        title="Edit course"
-                                                    >
-                                                        <Pencil
-                                                            size={16}
-                                                        />
-                                                    </button>
-
-                                                    <button
-                                                        type="button"
-                                                        className="admin-delete"
-                                                        onClick={() =>
-                                                            deleteCourse(
-                                                                course.id
-                                                            )
-                                                        }
-                                                        title="Delete course"
-                                                    >
-                                                        <Trash2
-                                                            size={16}
-                                                        />
-                                                    </button>
+{course.active ? (
+    <button
+        type="button"
+        className="admin-delete"
+        onClick={() =>
+            archiveCourse(course.id)
+        }
+        title="Archive course"
+    >
+        <Archive size={16} />
+    </button>
+) : (
+    <button
+        type="button"
+        className="admin-edit"
+        onClick={() =>
+            restoreCourse(course.id)
+        }
+        title="Restore course"
+    >
+        <RotateCcw size={16} />
+    </button>
+)}
 
                                                 </div>
 
