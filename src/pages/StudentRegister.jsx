@@ -15,6 +15,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 
 function StudentRegister() {
@@ -271,6 +272,10 @@ function StudentRegister() {
   // =====================================================
 
   return (
+
+     <>
+      <Navbar />
+
 
     <main className="student-login-page">
 
@@ -742,7 +747,7 @@ function StudentRegister() {
       </div>
 
     </main>
-
+</>
   );
 }
 

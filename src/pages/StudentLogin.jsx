@@ -9,6 +9,7 @@ import {
     UserPlus,
 } from "lucide-react";
 
+import Navbar from "../components/Navbar";
 import {
     useLocation,
     useNavigate,
@@ -403,6 +404,10 @@ function StudentLogin() {
 
 
     return (
+
+         <>
+      <Navbar />
+
 
         <main className="student-login-page">
 
@@ -820,6 +825,9 @@ function StudentLogin() {
             </div>
 
         </main>
+
+</>
+        
 
     );
 

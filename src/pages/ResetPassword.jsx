@@ -8,6 +8,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function ResetPassword() {
   const navigate = useNavigate();
@@ -81,6 +82,10 @@ function ResetPassword() {
   };
 
   return (
+
+     <>
+      <Navbar />
+
     <main className="student-login-page">
       <div className="student-login-decoration student-login-decoration-one" />
       <div className="student-login-decoration student-login-decoration-two" />
@@ -343,6 +348,8 @@ function ResetPassword() {
         </div>
       </div>
     </main>
+
+    </>
   );
 }
 
