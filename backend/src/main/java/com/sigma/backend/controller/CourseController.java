@@ -10,45 +10,41 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/courses")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
+@CrossOrigin(origins = { "http://localhost:5173", "http://localhost:5174" })
 public class CourseController {
 
-    private final CourseRepository courseRepository;
+        private final CourseRepository courseRepository;
 
-    public CourseController(
-            CourseRepository courseRepository
-    ) {
-        this.courseRepository = courseRepository;
-    }
+        public CourseController(
+                        CourseRepository courseRepository) {
+                this.courseRepository = courseRepository;
+        }
 
+        // =====================================================
+        // GET ALL ACTIVE COURSES
+        // =====================================================
 
-    // =====================================================
-    // GET ALL ACTIVE COURSES
-    // =====================================================
+        @GetMapping
+        public ResponseEntity<List<Course>> getCourses() {
 
-    @GetMapping
-    public ResponseEntity<List<Course>> getCourses() {
+                return ResponseEntity.ok(
+                                courseRepository.findByActiveTrue());
+        }
 
-        return ResponseEntity.ok(
-                courseRepository.findByActiveTrue()
-        );
-    }
+        // =====================================================
+        // GET COURSE BY ID
+        // =====================================================
+        @GetMapping("/{id}")
+        public ResponseEntity<Course> getCourse(
+                        @PathVariable Long id) {
 
-
-    // =====================================================
-    // GET COURSE BY ID
-    // =====================================================
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Course> getCourse(
-            @PathVariable Long id
-    ) {
-
-        return courseRepository
-                .findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(
-                        ResponseEntity.notFound().build()
-                );
-    }
+                return courseRepository
+                                .findById(id)
+                                .filter(Course::isActive)
+                                .map(ResponseEntity::ok)
+                                .orElse(
+                                                ResponseEntity
+                                                                .notFound()
+                                                                .build());
+        }
 }

@@ -45,7 +45,8 @@ public class AdminCourseController {
 
                 course.setId(null);
 
-                Course savedCourse = courseRepository.save(course);
+                Course savedCourse =
+                                courseRepository.save(course);
 
                 return ResponseEntity.ok(
                                 savedCourse);
@@ -124,6 +125,13 @@ public class AdminCourseController {
                                 courseData.getMode());
 
                 // =================================================
+                // TIMING
+                // =================================================
+
+                course.setTiming(
+                                courseData.getTiming());
+
+                // =================================================
                 // CURRICULUM
                 // =================================================
 
@@ -155,50 +163,60 @@ public class AdminCourseController {
                 // SAVE
                 // =================================================
 
-                Course updatedCourse = courseRepository.save(course);
+                Course updatedCourse =
+                                courseRepository.save(course);
 
                 return ResponseEntity.ok(
                                 updatedCourse);
         }
 
         // =====================================================
-// RESTORE COURSE
-// =====================================================
+        // RESTORE COURSE
+        // =====================================================
 
-@PutMapping("/{id}/restore")
-public ResponseEntity<Course> restoreCourse(
-        @PathVariable Long id
-) {
+        @PutMapping("/{id}/restore")
+        public ResponseEntity<Course> restoreCourse(
+                        @PathVariable Long id) {
 
-    Course course =
-            courseRepository
-                    .findById(id)
-                    .orElse(null);
+                Course course =
+                                courseRepository
+                                                .findById(id)
+                                                .orElse(null);
 
-    if (course == null) {
-        return ResponseEntity
-                .notFound()
-                .build();
-    }
+                if (course == null) {
 
-    course.setActive(true);
+                        return ResponseEntity
+                                        .notFound()
+                                        .build();
+                }
 
-    Course restoredCourse =
-            courseRepository.save(course);
+                /*
+                 * Restore the course by making it active.
+                 *
+                 * No other course information is modified.
+                 */
 
-    return ResponseEntity.ok(restoredCourse);
-}
+                course.setActive(true);
+
+                Course restoredCourse =
+                                courseRepository.save(course);
+
+                return ResponseEntity.ok(
+                                restoredCourse);
+        }
+
         // =====================================================
         // ARCHIVE COURSE
         // =====================================================
 
         @DeleteMapping("/{id}")
-        public ResponseEntity<Void> deleteCourse(
+        public ResponseEntity<Course> deleteCourse(
                         @PathVariable Long id) {
 
-                Course course = courseRepository
-                                .findById(id)
-                                .orElse(null);
+                Course course =
+                                courseRepository
+                                                .findById(id)
+                                                .orElse(null);
 
                 if (course == null) {
 
@@ -218,10 +236,15 @@ public ResponseEntity<Course> restoreCourse(
 
                 course.setActive(false);
 
-                courseRepository.save(course);
+                Course archivedCourse =
+                                courseRepository.save(course);
 
-                return ResponseEntity
-                                .noContent()
-                                .build();
+                /*
+                 * Return the updated course so the frontend
+                 * can immediately update its local state.
+                 */
+
+                return ResponseEntity.ok(
+                                archivedCourse);
         }
 }

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import {
     Plus,
     Pencil,
-Archive,
-RotateCcw,
+    Archive,
+    RotateCcw,
     Save,
     X,
     RefreshCw,
@@ -206,16 +206,16 @@ function AdminCourses() {
                 course.imageUrl || "",
             active:
                 course.active ?? true,
-startDate:
-  course.startDate || "",
+            startDate:
+                course.startDate || "",
 
-mode:
-  course.mode || "",
+            mode:
+                course.mode || "",
 
-timing:
-  course.timing || "",
+            timing:
+                course.timing || "",
 
-curriculum:
+            curriculum:
                 course.curriculum?.length
                     ? course.curriculum
                     : [""],
@@ -337,14 +337,14 @@ curriculum:
 
             startDate:
                 form.startDate || null,
-mode:
-  form.mode.trim(),
+            mode:
+                form.mode.trim(),
 
-timing:
-  form.timing.trim(),
+            timing:
+                form.timing.trim(),
 
-curriculum:
-  cleanArray(form.curriculum),
+            curriculum:
+                cleanArray(form.curriculum),
 
             faculty:
                 cleanArray(form.faculty),
@@ -417,86 +417,15 @@ curriculum:
             setSaving(false);
         }
     };
-
-    // =========================================================
-    // DELETE COURSE
-    // =========================================================
+// =========================================================
+// ARCHIVE COURSE
+// =========================================================
 
 const archiveCourse = async (id) => {
-  const confirmed =
-    window.confirm(
-        "Are you sure you want to archive this course? It will no longer appear as an active course, but existing student enrollments and records will be preserved."
-    );
-
-        if (!confirmed) {
-            return;
-        }
-
-        const currentToken =
-            localStorage.getItem("adminToken");
-
-        try {
-            setError("");
-
-            const response = await fetch(
-                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${id}`,
-                {
-                    method: "DELETE",
-
-                    headers: {
-                        Authorization:
-                            `Bearer ${currentToken}`,
-                    },
-                }
-            );
-
-            if (
-                response.status === 401 ||
-                response.status === 403
-            ) {
-                setError(
-                    "You are not authorized."
-                );
-
-                return;
-            }
-
-if (!response.ok) {
-    throw new Error(
-        "Failed to archive course."
-    );
-}
-            setCourses((prev) =>
-                prev.filter(
-                    (course) =>
-                        course.id !== id
-                )
-            );
-
-            if (
-                editingCourse?.id === id
-            ) {
-                cancelEdit();
-            }
-        } catch (err) {
-            console.error(err);
-
-            setError(
-                err.message ||
-                "Unable to achive course."
-            );
-        }
-    };
-
-// =========================================================
-// RESTORE COURSE
-// =========================================================
-
-const restoreCourse = async (id) => {
 
     const confirmed =
         window.confirm(
-            "Are you sure you want to restore this course? It will become active and visible to students again."
+            "Are you sure you want to archive this course? It will no longer appear as an active course, but existing student enrollments and records will be preserved."
         );
 
     if (!confirmed) {
@@ -511,9 +440,9 @@ const restoreCourse = async (id) => {
         setError("");
 
         const response = await fetch(
-            `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${id}/restore`,
+            `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${id}`,
             {
-                method: "PUT",
+                method: "DELETE",
 
                 headers: {
                     Authorization:
@@ -535,20 +464,29 @@ const restoreCourse = async (id) => {
 
         if (!response.ok) {
             throw new Error(
-                "Failed to restore course."
+                "Failed to archive course."
             );
         }
 
-        const restoredCourse =
+        // Backend now returns the archived course
+        const archivedCourse =
             await response.json();
 
+        // Keep the course in the admin list,
+        // but update its status to inactive.
         setCourses((prev) =>
             prev.map((course) =>
                 course.id === id
-                    ? restoredCourse
+                    ? archivedCourse
                     : course
             )
         );
+
+        if (
+            editingCourse?.id === id
+        ) {
+            cancelEdit();
+        }
 
     } catch (err) {
 
@@ -556,10 +494,82 @@ const restoreCourse = async (id) => {
 
         setError(
             err.message ||
-            "Unable to restore course."
+            "Unable to archive course."
         );
     }
 };
+    // =========================================================
+    // RESTORE COURSE
+    // =========================================================
+
+    const restoreCourse = async (id) => {
+
+        const confirmed =
+            window.confirm(
+                "Are you sure you want to restore this course? It will become active and visible to students again."
+            );
+
+        if (!confirmed) {
+            return;
+        }
+
+        const currentToken =
+            localStorage.getItem("adminToken");
+
+        try {
+
+            setError("");
+
+            const response = await fetch(
+                `https://sigma-classes-backend-ajkh.onrender.com/api/admin/courses/${id}/restore`,
+                {
+                    method: "PUT",
+
+                    headers: {
+                        Authorization:
+                            `Bearer ${currentToken}`,
+                    },
+                }
+            );
+
+            if (
+                response.status === 401 ||
+                response.status === 403
+            ) {
+                setError(
+                    "You are not authorized."
+                );
+
+                return;
+            }
+
+            if (!response.ok) {
+                throw new Error(
+                    "Failed to restore course."
+                );
+            }
+
+            const restoredCourse =
+                await response.json();
+
+            setCourses((prev) =>
+                prev.map((course) =>
+                    course.id === id
+                        ? restoredCourse
+                        : course
+                )
+            );
+
+        } catch (err) {
+
+            console.error(err);
+
+            setError(
+                err.message ||
+                "Unable to restore course."
+            );
+        }
+    };
     // =========================================================
     // RENDER ARRAY FIELD
     // =========================================================
@@ -817,24 +827,24 @@ const restoreCourse = async (id) => {
                                     }
                                 />
                             </div>
-                            
-                            <div className="admin-form-field">
-  <label>
-    Class Timing
-  </label>
 
-  <input
-    type="text"
-    value={form.timing}
-    placeholder="Morning — 7:00 AM to 9:00 AM"
-    onChange={(event) =>
-      updateField(
-        "timing",
-        event.target.value
-      )
-    }
-  />
-</div>
+                            <div className="admin-form-field">
+                                <label>
+                                    Class Timing
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value={form.timing}
+                                    placeholder="Morning — 7:00 AM to 9:00 AM"
+                                    onChange={(event) =>
+                                        updateField(
+                                            "timing",
+                                            event.target.value
+                                        )
+                                    }
+                                />
+                            </div>
                             <div className="admin-form-field admin-form-full">
                                 <label>
                                     Image URL
@@ -1104,38 +1114,38 @@ const restoreCourse = async (id) => {
                                             <td>
 
                                                 <div className="admin-course-row-actions">
-<button
-    type="button"
-    className="admin-edit"
-    onClick={() => editCourse(course)}
-    title="Edit course"
->
-    <Pencil size={16} />
-</button>
+                                                    <button
+                                                        type="button"
+                                                        className="admin-edit"
+                                                        onClick={() => editCourse(course)}
+                                                        title="Edit course"
+                                                    >
+                                                        <Pencil size={16} />
+                                                    </button>
 
-{course.active ? (
-    <button
-        type="button"
-        className="admin-delete"
-        onClick={() =>
-            archiveCourse(course.id)
-        }
-        title="Archive course"
-    >
-        <Archive size={16} />
-    </button>
-) : (
-    <button
-        type="button"
-        className="admin-edit"
-        onClick={() =>
-            restoreCourse(course.id)
-        }
-        title="Restore course"
-    >
-        <RotateCcw size={16} />
-    </button>
-)}
+                                                    {course.active ? (
+                                                        <button
+                                                            type="button"
+                                                            className="admin-delete"
+                                                            onClick={() =>
+                                                                archiveCourse(course.id)
+                                                            }
+                                                            title="Archive course"
+                                                        >
+                                                            <Archive size={16} />
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                            type="button"
+                                                            className="admin-edit"
+                                                            onClick={() =>
+                                                                restoreCourse(course.id)
+                                                            }
+                                                            title="Restore course"
+                                                        >
+                                                            <RotateCcw size={16} />
+                                                        </button>
+                                                    )}
 
                                                 </div>
 
