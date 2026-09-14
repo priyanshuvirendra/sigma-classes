@@ -432,27 +432,9 @@ private String buildEnrollmentApprovedEmail(
 
             </div>
 
+        ${emailFooter}
 
-            <div style="
-                padding:20px 30px;
-                background:#fafafa;
-                border-top:1px solid #eeeeee;
-                text-align:center;
-            ">
-
-                <p style="
-                    margin:0;
-                    color:#667085;
-                    font-size:12px;
-                    line-height:1.6;
-                ">
-                    Sigma Classes<br>
-                    Your preparation. Your progress.
-                </p>
-
-            </div>
-
-        </div>
+</div>
 
         </body>
         </html>
@@ -482,10 +464,7 @@ private String buildEnrollmentApprovedEmail(
                 dashboardUrl
         )
 
-        .replace(
-    "</body>",
-    getEmailFooter() + "</body>"
-);
+        .replace("${emailFooter}", getEmailFooter());
 }
 
 private String buildVerificationEmail(
@@ -668,24 +647,10 @@ private String buildVerificationEmail(
                     </div>
 
 
-                    <!-- Footer -->
-                    <div style="
-                        background: #111111;
-                        padding: 18px 25px;
-                        text-align: center;
-                    ">
 
-                        <p style="
-                            margin: 0;
-                            color: #999999;
-                            font-size: 12px;
-                        ">
-                            © Sigma Classes. All rights reserved.
-                        </p>
+                ${emailFooter}
 
-                    </div>
-
-                </div>
+</div>
 
             </body>
             </html>
@@ -698,10 +663,7 @@ private String buildVerificationEmail(
                     "${verificationUrl}",
                     verificationUrl
             )
-            .replace(
-    "</body>",
-    getEmailFooter() + "</body>"
-);
+            .replace("${emailFooter}", getEmailFooter());
 }
 
    private String buildWelcomeEmail(
@@ -907,24 +869,9 @@ private String buildVerificationEmail(
                         </div>
 
 
-                        <!-- Footer -->
-                        <div style="
-                            background: #111111;
-                            padding: 18px 25px;
-                            text-align: center;
-                        ">
+                    ${emailFooter}
 
-                            <p style="
-                                margin: 0;
-                                color: #999999;
-                                font-size: 12px;
-                            ">
-                                © Sigma Classes. All rights reserved.
-                            </p>
-
-                        </div>
-
-                    </div>
+</div>
 
                 </body>
                 </html>
@@ -936,10 +883,7 @@ private String buildVerificationEmail(
         "${loginUrl}",
         loginUrl
 )
-.replace(
-    "</body>",
-    getEmailFooter() + "</body>"
-);
+.replace("${emailFooter}", getEmailFooter());
 }
 // =====================================================
 // BUILD PASSWORD RESET EMAIL
@@ -1118,25 +1062,9 @@ private String buildPasswordResetEmail(
                     </div>
 
 
-                    <!-- FOOTER -->
+                ${emailFooter}
 
-                    <div style="
-                        background: #111111;
-                        padding: 18px 25px;
-                        text-align: center;
-                    ">
-
-                        <p style="
-                            margin: 0;
-                            color: #999999;
-                            font-size: 12px;
-                        ">
-                            © Sigma Classes. All rights reserved.
-                        </p>
-
-                    </div>
-
-                </div>
+</div>
 
             </body>
 
@@ -1150,10 +1078,7 @@ private String buildPasswordResetEmail(
                     "${resetUrl}",
                     resetUrl
             )
-            .replace(
-    "</body>",
-    getEmailFooter() + "</body>"
-);
+            .replace("${emailFooter}", getEmailFooter());
 }
 
 private String buildEnrollmentRequestEmail(
@@ -1418,28 +1343,9 @@ private String buildEnrollmentRequestEmail(
             </div>
 
 
-            <!-- FOOTER -->
+        ${emailFooter}
 
-            <div style="
-                padding:20px 30px;
-                background:#fafafa;
-                border-top:1px solid #eeeeee;
-                text-align:center;
-            ">
-
-                <p style="
-                    margin:0;
-                    color:#667085;
-                    font-size:12px;
-                    line-height:1.6;
-                ">
-                    Sigma Classes<br>
-                    Your preparation. Your progress.
-                </p>
-
-            </div>
-
-        </div>
+</div>
 
         </body>
         </html>
@@ -1450,10 +1356,7 @@ private String buildEnrollmentRequestEmail(
         .replace("${courseDuration}", escapeHtml(courseDuration))
         .replace("${courseMode}", escapeHtml(courseMode))
         .replace("${dashboardUrl}", dashboardUrl)
-        .replace(
-    "</body>",
-    getEmailFooter() + "</body>"
-);
+        .replace("${emailFooter}", getEmailFooter());
 }
 
 
@@ -1466,7 +1369,7 @@ private String getEmailFooter() {
             cellspacing="0"
             border="0"
             style="
-                margin-top:35px;
+                margin-top:0;
                 background-color:#111111;
                 border-radius:0 0 12px 12px;
             "
