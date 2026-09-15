@@ -2,20 +2,21 @@ import { useEffect, useState } from "react";
 import SEO from "../components/SEO";
 
 import {
-  ArrowLeft,
-  CalendarDays,
-  CheckCircle2,
-  Clock3,
-  Clock,
-  IndianRupee,
-  Users,
-  Monitor,
-  Loader2,
-  FileText,
-  PlayCircle,
-  ExternalLink,
-  Lock,
-  Phone,
+    ArrowLeft,
+    ArrowUpRight,
+    CalendarDays,
+    CheckCircle2,
+    Clock3,
+    Clock,
+    IndianRupee,
+    Users,
+    Monitor,
+    Loader2,
+    FileText,
+    PlayCircle,
+    ExternalLink,
+    Lock,
+    Phone,
 } from "lucide-react";
 
 import {
