@@ -18,7 +18,6 @@ import {
     Lock,
     Phone,
 } from "lucide-react";
-
 import {
   Link,
   useNavigate,
