@@ -8,7 +8,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-
+import SEO from "./components/SEO";
 import CourseDetails from "./pages/CourseDetails";
 import AdminLogin from "./pages/AdminLogin";
 import VerifyEmail from "./pages/VerifyEmail";
@@ -69,43 +69,15 @@ function ScrollToHash() {
 
 function Home() {
 
-  useEffect(() => {
-  document.title =
-    "Best Coaching in Sasaram | Sigma Classes | SSC, BPSC, Banking & Competitive Exams";
-
-  const description =
-    "Sigma Classes is one of the best coaching institutes in Sasaram for SSC, BPSC, Banking, Teacher TRE, TET and other competitive exams. Get expert faculty, focused preparation, regular tests and personal guidance.";
-
-  let metaDescription = document.querySelector(
-    'meta[name="description"]'
-  );
-
-  if (!metaDescription) {
-    metaDescription = document.createElement("meta");
-    metaDescription.setAttribute("name", "description");
-    document.head.appendChild(metaDescription);
-  }
-
-  metaDescription.setAttribute("content", description);
-
-  let canonical = document.querySelector(
-    'link[rel="canonical"]'
-  );
-
-  if (!canonical) {
-    canonical = document.createElement("link");
-    canonical.setAttribute("rel", "canonical");
-    document.head.appendChild(canonical);
-  }
-
-  canonical.setAttribute(
-    "href",
-    "https://sigmaclassesssm.in/"
-  );
-}, []);
-
+ 
   return (
     <>
+<SEO
+    title="Best Coaching Institute in Sasaram | SSC, BPSC, Banking, TRE & TET | Sigma Classes"
+    description="Sigma Classes is a coaching institute in Sasaram, Bihar offering preparation for SSC, BPSC, Banking, Teacher TRE, TET and other competitive examinations with structured courses, experienced faculty, study materials and regular tests."
+    canonical="https://sigmaclassesssm.in/"
+/>
+
       <Navbar />
 
       <main>

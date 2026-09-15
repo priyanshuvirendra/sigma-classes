@@ -7,6 +7,7 @@ import {
   UserRound,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -56,17 +57,17 @@ function Navbar() {
       <div className="container nav-container">
 
         {/* Logo */}
-        <a
-          href="/"
-          className="logo"
-          onClick={closeMenu}
-        >
+        <Link
+  to="/"
+  className="logo"
+  onClick={closeMenu}
+>
           <span className="logo-mark">S</span>
 
           <span>
             Sigma <strong>Classes</strong>
           </span>
-        </a>
+       </Link>
 
 
         {/* Navigation */}
@@ -75,10 +76,19 @@ function Navbar() {
           <a href="/#home" onClick={closeMenu}>
             Home
           </a>
+<Link
+  to="/courses"
+  onClick={closeMenu}
+>
+  Courses
+</Link>
 
-          <a href="/courses"onClick={closeMenu}>
-            Courses
-          </a>
+<Link
+  to="/free-learning"
+  onClick={closeMenu}
+>
+  Free Learning
+</Link>
 
           <a href="/#results" onClick={closeMenu}>
             Results
@@ -93,15 +103,15 @@ function Navbar() {
           </a>
 
           {/* Student Portal */}
-          <a
-            href={
-              isStudentLoggedIn
-                ? "/student/dashboard"
-                : "/student/login"
-            }
-            className="nav-student-link"
-            onClick={closeMenu}
-          >
+         <Link
+  to={
+    isStudentLoggedIn
+      ? "/student/dashboard"
+      : "/student/login"
+  }
+  className="nav-student-link"
+  onClick={closeMenu}
+>
             <UserRound size={16} />
 
             <span>
@@ -109,8 +119,7 @@ function Navbar() {
                 ? "Dashboard"
                 : "Student Portal"}
             </span>
-          </a>
-
+</Link>
         </nav>
 
 

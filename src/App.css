@@ -38689,3 +38689,117 @@ body {
     width: 100%;
   }
 }
+
+/* =====================================================
+   COURSE SEO OVERVIEW
+===================================================== */
+
+.course-seo-overview {
+    padding-top: 0;
+}
+
+.course-seo-overview .detail-block {
+    max-width: 850px;
+}
+
+.course-seo-overview .detail-block > p {
+    margin-top: 20px;
+    line-height: 1.8;
+}
+
+.course-seo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.course-seo-tags span {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    font-size: 13px;
+}
+
+.course-free-learning {
+    margin-top: 28px;
+}
+
+.course-free-learning p {
+    margin-bottom: 10px;
+}
+
+.course-free-learning-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+}
+
+.course-free-learning-link:hover {
+    opacity: 0.7;
+}
+
+.free-learning-course-link {
+    margin-top: 48px;
+    padding-bottom: 48px;
+}
+
+.free-learning-course-link p {
+    margin-bottom: 12px;
+}
+
+.free-learning-course-link-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: inherit;
+    transition: opacity 0.2s ease;
+}
+
+.free-learning-course-link-button:hover {
+    opacity: 0.7;
+}
+
+.course-breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.course-breadcrumbs a {
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.course-breadcrumbs a:hover {
+    opacity: 1;
+}
+
+.course-breadcrumbs span {
+    opacity: 0.55;
+}
+
+.course-breadcrumbs span[aria-current="page"] {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .course-breadcrumbs {
+        font-size: 12px;
+        gap: 6px;
+    }
+}

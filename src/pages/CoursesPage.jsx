@@ -1,46 +1,55 @@
 import Navbar from "../components/Navbar";
 import Courses from "../components/Courses";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 
 function CoursesPage() {
-  return (
-    <>
-      <Navbar />
+    return (
+        <>
+            <SEO
+                title="Courses | SSC, BPSC, Banking & Competitive Exam Coaching | Sigma Classes"
+                description="Explore courses at Sigma Classes, Sasaram for SSC, BPSC, Banking, Teacher TRE, TET and other competitive exams. Find the right preparation program for your target examination."
+                canonical="https://sigmaclassesssm.in/courses"
+            />
 
-      <main className="courses-page">
+            <Navbar />
 
-        <div className="courses-page-header">
+            <main className="courses-page">
 
-          <div className="container">
+                <div className="courses-page-header">
 
-            <span className="section-label">
-              ALL COURSES
-            </span>
+                    <div className="container">
 
-            <h1>
-              Find the right preparation
-              <br />
-              <span>for your examination.</span>
-            </h1>
+                        <span className="section-label">
+                            ALL COURSES
+                        </span>
 
-            <p>
-              Explore all the courses offered by Sigma Classes
-              and choose the preparation path that matches
-              your target examination.
-            </p>
+                        <h1>
+                            Find the right preparation
+                            <br />
+                            <span>
+                                for your examination.
+                            </span>
+                        </h1>
 
-          </div>
+                        <p>
+                            Explore all the courses offered by
+                            Sigma Classes and choose the
+                            preparation path that matches
+                            your target examination.
+                        </p>
 
-        </div>
+                    </div>
 
+                </div>
 
-        <Courses />
+                <Courses />
 
-      </main>
+            </main>
 
-      <Footer />
-    </>
-  );
+            <Footer />
+        </>
+    );
 }
 
 export default CoursesPage;

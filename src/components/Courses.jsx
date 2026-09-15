@@ -486,15 +486,15 @@ useEffect(() => {
 
     <div className="courses-view-all">
 
-      <a
-        href="/courses"
+      <Link
+        to="/courses"
         className="courses-view-all-button"
       >
         View All Courses
 
         <ArrowUpRight size={18} />
 
-      </a>
+      </Link>
 
     </div>
 

@@ -73,13 +73,12 @@ function Hero() {
             </h1>
 
 
-            <p className="sigma-hero-description">
-              Focused preparation for BPSC, SSC, Banking, Teacher TRE,
-              TET and other competitive examinations — guided by
-              experienced faculty and built around disciplined,
-              classroom learning.
-            </p>
-
+<p className="sigma-hero-description">
+    Prepare for BPSC, SSC, Banking, Teacher TRE, TET and
+    other competitive examinations with experienced
+    faculty, structured courses, regular tests and focused
+    classroom learning at Sigma Classes, Sasaram.
+</p>
 
             {/* =================================================
                 EXAM COVERAGE
